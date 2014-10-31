@@ -5,6 +5,7 @@
  */
 package dataSource;
 
+import domain.Order;
 import java.sql.Connection;
 
 /**
@@ -12,25 +13,30 @@ import java.sql.Connection;
  * @author Søren
  */
 public class DBFacade {
-    
-	  private Connection con;
-	  
-	  //== Singleton start
-	  private static DBFacade instance;
-	 
-	  private DBFacade() {
-		  //MAPPERS START
-              
-                  //MAPPERS END
-            	  con 	= DBConnector.getInstance().getConnection();  
-                  
-	  }
-	  public static DBFacade getInstance()
-	  {
-		  if(instance == null)
-			  instance = new DBFacade();
-		  return instance;
-	  }
+
+    private Connection con;
+    private OrderMapper om;
+    //== Singleton start
+    private static DBFacade instance;
+
+    private DBFacade() {
+        //MAPPERS START
+        om = new OrderMapper();
+        //MAPPERS END
+        con = DBConnector.getInstance().getConnection();
+
+    }
+
+    public static DBFacade getInstance() {
+        if (instance == null) {
+            instance = new DBFacade();
+        }
+        return instance;
+    }
 	  //== Singleton end
-    
+
+    public Order getOrder(int orderID) {
+        return om.getOrder(orderID, con);
+    }
+
 }
