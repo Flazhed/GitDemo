@@ -19,6 +19,35 @@ public class OrderDetail {
         this.resourceID = resourceID;
         this.qty = qty;
     }
+
+    @Override
+    public String toString() {
+        return "OrderID: " + orderID + ", resourceID: " + resourceID + ", qty: " + qty + '}';
+    }
+    
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public int getResourceID() {
+        return resourceID;
+    }
+
+    public void setResourceID(int resourceID) {
+        this.resourceID = resourceID;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
     
     
     
