@@ -46,7 +46,16 @@ public class Order {
     
     @Override
     public String toString() {
-        return "Order{" + "orderID=" + orderID + ", price=" + price + ", startDate=" + startDate + ", endDate=" + endDate + ", comfirmed=" + comfirmed + ", customerID=" + customerID + ", salesID=" + salesID + '}';
+        String str   = "orderID: " + orderID+ ", customerID: " + customerID + ", salesID: "
+                     + salesID  + ", price: " + price + ", comfirmed: " + comfirmed
+                     + ", startDate: " + startDate + ", endDate: " + endDate
+                     + "\nOrder Details:\n";
+        
+        for (OrderDetail orderDetail : orderDetails) {
+            str = str + orderDetail+"/n";
+        }
+        
+        return str;
     }
     
     
