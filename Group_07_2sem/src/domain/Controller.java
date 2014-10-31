@@ -5,10 +5,29 @@
  */
 package domain;
 
+import dataSource.DBFacade;
+
 /**
  *
  * @author Søren
  */
 public class Controller {
+    
+    private static Controller instance;
+    private DBFacade dbf;
+
+    private Controller() {
+
+        dbf = DBFacade.getInstance();
+    }
+
+    public static Controller getInstance() {
+
+        if (instance == null) {
+            instance = new Controller();
+        }
+        return instance;
+
+    }
     
 }
