@@ -10,6 +10,7 @@ package domain;
  * @author Uffe
  */
 public class OrderDetail {
+    //Tilføj storage ID og fix toString
     private int orderID;
     private int resourceID;
     private int qty;
