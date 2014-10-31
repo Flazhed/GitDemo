@@ -11,22 +11,28 @@ package domain;
  */
 public class Customer {
     private int customerID;
-    private int zipCode;
-    private int phoneNumber;
     private String fullName;
     private String companyName;
     private String address;
+    private int zipCode;
+    private int phoneNumber;
     
     
-    public Customer(int customerID, int zipCode, int phoneNumber, 
-                    String fullname, String companyName, String address){
+
+    public Customer(int customerID, String fullName, String companyName, 
+                    String address, int zipCode, int phoneNumber) {
+       
         this.customerID = customerID;
-        this.zipCode = zipCode;
-        this.phoneNumber = phoneNumber;
-        this.fullName = fullname;
+        this.fullName = fullName;
         this.companyName = companyName;
         this.address = address;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
     }
+    
+    
+    
+    
 
     @Override
     public String toString() {

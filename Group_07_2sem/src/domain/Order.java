@@ -16,23 +16,29 @@ import java.util.ArrayList;
  */
 public class Order {
     private int orderID;
-    private float price;
-    private Date startDate;
-    private Date endDate;
-    private boolean comfirmed;
     private int customerID; //skal laves om til Customer Object senere
     private int salesID; // skal laves om til Salesman Object senere
+    private boolean comfirmed;
+    private Date startDate;
+    private Date endDate;
+    private float price;
     private ArrayList<OrderDetail> orderDetails;
+
     
-    public Order(int orderID, float price, long startDate, long endDate,
-                 boolean confirmed) { // Der mangler stadig Customer og Sales i constructor
+    
+    // OBS! Customer og Salesman er ikke Objecter, men Integer. (skal laves om)
+    public Order(int orderID, int customerID, int salesID, boolean comfirmed, 
+                 Date startDate, Date endDate, float price) {
         this.orderID = orderID;
+        this.customerID = customerID;
+        this.salesID = salesID;
+        this.comfirmed = comfirmed;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.price = price;
-        this.comfirmed = confirmed;
-        this.startDate = new Date(startDate);
-        this.endDate = new Date(endDate);
         orderDetails = new ArrayList();
     }
+    
     
     public void addDetail(OrderDetail od){
         orderDetails.add(od);

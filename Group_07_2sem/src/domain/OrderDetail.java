@@ -10,8 +10,6 @@ package domain;
  * @author Uffe
  */
 public class OrderDetail {
-    //OrderDetails (OrderID(Orders), RessourceID(Ressources), qty) 
-    
     private int orderID;
     private int resourceID;
     private int qty;
