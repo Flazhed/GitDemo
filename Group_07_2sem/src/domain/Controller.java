@@ -30,4 +30,9 @@ public class Controller {
 
     }
     
+        public Order getOrder(int orderID) {
+        
+        return dbf.getOrder(orderID);
+    }
+    
 }

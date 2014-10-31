@@ -58,7 +58,6 @@ public class OrderMapper {
 
             try {
                 statment.close();
-                con.close();
             } catch (SQLException e) {
                 System.out.println("Error in OrderMapper, finally " + e);
             }
