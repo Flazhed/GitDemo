@@ -6,6 +6,7 @@
 package domain;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 
 
@@ -21,7 +22,7 @@ public class Order {
     private boolean comfirmed;
     private int customerID; //skal laves om til Customer Object senere
     private int salesID; // skal laves om til Salesman Object senere
-   
+    private ArrayList<OrderDetail> orderDetails;
     
     public Order(int orderID, float price, long startDate, long endDate,
                  boolean confirmed) { // Der mangler stadig Customer og Sales i constructor
@@ -30,8 +31,13 @@ public class Order {
         this.comfirmed = confirmed;
         this.startDate = new Date(startDate);
         this.endDate = new Date(endDate);
+        orderDetails = new ArrayList();
     }
-
+    
+    public void addDetail(OrderDetail od){
+        orderDetails.add(od);
+    }
+    
     @Override
     public String toString() {
         return "Order{" + "orderID=" + orderID + ", price=" + price + ", startDate=" + startDate + ", endDate=" + endDate + ", comfirmed=" + comfirmed + ", customerID=" + customerID + ", salesID=" + salesID + '}';
