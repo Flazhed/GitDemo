@@ -52,7 +52,7 @@ public class Order {
                      + "\nOrder Details:\n";
         
         for (OrderDetail orderDetail : orderDetails) {
-            str = str + orderDetail+"/n";
+            str = str + orderDetail+"\n";
         }
         
         return str;
