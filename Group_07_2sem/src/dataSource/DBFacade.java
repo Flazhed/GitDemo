@@ -33,10 +33,14 @@ public class DBFacade {
         }
         return instance;
     }
-	  //== Singleton end
+    //== Singleton end
 
     public Order getOrder(int orderID) {
         return om.getOrder(orderID, con);
+    }
+
+    public boolean insertOrder(Order o) {
+        return om.insertOrder(o, con);
     }
 
 }

@@ -18,6 +18,68 @@ import java.sql.SQLException;
  */
 public class OrderMapper {
 
+    //Single transaction.. To be added a list of transactions. 
+    public boolean insertOrder(Order o, Connection con) {
+
+        int rowInserted = 0;
+
+        String SQLString = "INSERT INTO Orders "
+                + "VALUES (?,?,?,?,?,?,?)";
+
+        PreparedStatement statement = null;
+
+        try {
+            statement = con.prepareStatement(SQLString);
+
+            statement.setInt(1, o.getOrderID());
+            statement.setInt(2, o.getCustomerID());
+            statement.setInt(3, o.getSalesID());
+            statement.setInt(4, o.getBoolToInt());
+            statement.setDate(5, o.getStartDate());
+            statement.setDate(6, o.getEndDate());
+            statement.setFloat(7, o.getPrice());
+
+            rowInserted = statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("ERROR in OrderMapper - insertOrder " + e.toString());
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("ERROR in OrderMapper - InsertOrder.Finally " + e);
+            }
+        }
+
+        System.out.println("RowsInserted: " + rowInserted);
+
+        return rowInserted == 1;
+    }
+
+    public boolean insertOrderDetails(OrderDetail od, Connection con) {
+        int rowInserted = 0;
+
+        String SQLString = "INSERT INTO Orderdetails "
+                + "VALUES (?,?,?,?)";
+
+        PreparedStatement statement = null;
+
+        try {
+            statement = con.prepareStatement(SQLString);
+
+            statement.setInt(1, od.getOrderID());
+            statement.setInt(2, od.getResourceID());
+            statement.setInt(3, rowInserted);
+            statement.setInt(4, od.getQty());
+            
+            
+            
+        } catch (SQLException e) {
+            
+        }
+
+    }
+
     public Order getOrder(int orderID, Connection con) {
 
         Order o = null;
@@ -53,13 +115,13 @@ public class OrderMapper {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error in OrderMapper " + e);
+            System.out.println("Error in OrderMapper - getOrder " + e);
         } finally {
 
             try {
                 statment.close();
             } catch (SQLException e) {
-                System.out.println("Error in OrderMapper, finally " + e);
+                System.out.println("Error in OrderMapper - getOrder.finally " + e);
             }
 
         }

@@ -12,7 +12,7 @@ import dataSource.DBFacade;
  * @author Søren
  */
 public class Controller {
-    
+
     private static Controller instance;
     private DBFacade dbf;
 
@@ -29,10 +29,14 @@ public class Controller {
         return instance;
 
     }
-    
-        public Order getOrder(int orderID) {
-        
+
+    public Order getOrder(int orderID) {
+
         return dbf.getOrder(orderID);
     }
-    
+
+    public boolean insertOrder(Order o) {
+        return dbf.insertOrder(o);
+    }
+
 }
