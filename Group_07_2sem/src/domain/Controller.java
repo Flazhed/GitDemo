@@ -41,6 +41,11 @@ public class Controller {
         return dbf.insertOrder(o);
     }
 
+    public boolean insertOrderDetails(Order o){
+        return dbf.insertOrderDetails(o);
+        
+    }
+    
     public Order createNewOrder(int orderID, int cusomerID, int salesID, boolean confirmed,
             Date startDate, Date endDate, float price) {
         Order o = new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);

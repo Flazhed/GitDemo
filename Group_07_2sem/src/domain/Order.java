@@ -48,6 +48,10 @@ public class Order {
         else return 0;
         
     }
+
+    public ArrayList<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
     
     public void addDetail(OrderDetail od){
         orderDetails.add(od);

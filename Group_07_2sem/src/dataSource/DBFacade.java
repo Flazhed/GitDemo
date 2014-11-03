@@ -6,7 +6,9 @@
 package dataSource;
 
 import domain.Order;
+import domain.OrderDetail;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -41,6 +43,10 @@ public class DBFacade {
 
     public boolean insertOrder(Order o) {
         return om.insertOrder(o, con);
+    }
+
+    public boolean insertOrderDetails(Order o) {
+        return om.insertOrderDetails(o.getOrderDetails(), con);
     }
 
 }

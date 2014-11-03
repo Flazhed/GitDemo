@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,17 +21,17 @@ public class OrderMapper {
 
     //Single transaction.. To be added a list of transactions. 
     public boolean insertOrder(Order o, Connection con) {
-        
+
         int rowInserted = 0;
-        
+
         String SQLString = "INSERT INTO Orders "
                 + "VALUES (?,?,?,?,?,?,?)";
-        
+
         PreparedStatement statement = null;
-        
+
         try {
             statement = con.prepareStatement(SQLString);
-            
+
             statement.setInt(1, o.getOrderID());
             statement.setInt(2, o.getCustomerID());
             statement.setInt(3, o.getSalesID());
@@ -38,9 +39,9 @@ public class OrderMapper {
             statement.setDate(5, o.getStartDate());
             statement.setDate(6, o.getEndDate());
             statement.setFloat(7, o.getPrice());
-            
+
             rowInserted = statement.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println("ERROR in OrderMapper - insertOrder " + e.toString());
         } finally {
@@ -50,44 +51,49 @@ public class OrderMapper {
                 System.out.println("ERROR in OrderMapper - InsertOrder.Finally " + e);
             }
         }
-        
+
         System.out.println("RowsInserted: " + rowInserted);
-        
+
         return rowInserted == 1;
     }
-    
-    public boolean insertOrderDetails(OrderDetail od, Connection con) {
+
+    public boolean insertOrderDetails(ArrayList<OrderDetail> odl, Connection con) {
         int rowInserted = 0;
-        
+
         String SQLString = "INSERT INTO Orderdetails "
                 + "VALUES (?,?,?,?)";
-        
+
         PreparedStatement statement = null;
-        
+
         try {
             statement = con.prepareStatement(SQLString);
-            
-            statement.setInt(1, od.getOrderID());
-            statement.setInt(2, od.getResourceID());
-            statement.setInt(3, od.getStorageID());
-            statement.setInt(4, od.getQty());
-            
-            rowInserted = statement.executeUpdate();
-            
+
+            for (int i = 0; i < odl.size(); i++) {
+
+                OrderDetail od = odl.get(i);
+
+                statement.setInt(1, od.getOrderID());
+                statement.setInt(2, od.getResourceID());
+                statement.setInt(3, od.getStorageID());
+                statement.setInt(4, od.getQty());
+                rowInserted += statement.executeUpdate();
+            }
+
         } catch (SQLException e) {
-            
+            System.out.println("ERROR in OrderMapper - InsertOrderDetails " + e);
         }
-        return rowInserted == 1;
+
+        return rowInserted == odl.size();
     }
-    
+
     public Order getOrder(int orderID, Connection con) {
-        
+
         Order o = null;
-        
+
         String SQLString1 = "SELECT * "
                 + "FROM Orders "
                 + "WHERE OrderID = ?";
-        
+
         String SQLString2 = "SELECT od.RessourceID, od.qty "
                 + "FROM OrderDetails od "
                 + "WHERE od.OrderID = ?";
@@ -97,36 +103,36 @@ public class OrderMapper {
         try {
             statment = con.prepareStatement(SQLString1);
             statment.setInt(1, orderID);
-            
+
             ResultSet rs = statment.executeQuery();
-            
+
             if (rs.next()) {
                 boolean confirmed = (1 == rs.getInt(4));
                 o = new Order(orderID, rs.getInt(2), rs.getInt(3), confirmed, rs.getDate(5), rs.getDate(6), rs.getFloat(7));
             }
-            
+
             statment = con.prepareStatement(SQLString2);
             statment.setInt(1, orderID);
-            
+
             rs = statment.executeQuery();
-            
+
             while (rs.next()) {
                 o.addDetail(new OrderDetail(orderID, rs.getInt(1), rs.getInt(2), rs.getInt(3)));
             }
-            
+
         } catch (SQLException e) {
             System.out.println("Error in OrderMapper - getOrder " + e);
         } finally {
-            
+
             try {
                 statment.close();
             } catch (SQLException e) {
                 System.out.println("Error in OrderMapper - getOrder.finally " + e);
             }
-            
+
         }
-        
+
         return o;
     }
-    
+
 }
