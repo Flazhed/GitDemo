@@ -5,6 +5,8 @@
  */
 package presentation;
 
+import domain.Controller;
+import domain.Order;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,13 +14,17 @@ import javax.swing.JOptionPane;
  * @author Søren
  */
 public class MainGUIFrame extends javax.swing.JFrame {
-
+    
+  Order currentOrder; // denne skal laves om, kun midlertidig.
+  Controller control;
     /**
      * Creates new form MainGUIFrame
      */
     public MainGUIFrame() {
         initComponents();
-    }
+        control = Controller.getInstance();
+        
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,7 +48,18 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        customerIdTextField1 = new javax.swing.JTextField();
+        salesIdTextField1 = new javax.swing.JTextField();
+        startDateTextField1 = new javax.swing.JTextField();
+        endDateTextField1 = new javax.swing.JTextField();
+        priceTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,7 +172,120 @@ public class MainGUIFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Ordre", orderTab);
-        jTabbedPane2.addTab("Kunde", jTabbedPane1);
+
+        jButton1.setText("gem banditten");
+
+        customerIdTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerIdTextField1ActionPerformed(evt);
+            }
+        });
+
+        salesIdTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesIdTextField1ActionPerformed(evt);
+            }
+        });
+
+        startDateTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startDateTextField1ActionPerformed(evt);
+            }
+        });
+
+        endDateTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endDateTextField1ActionPerformed(evt);
+            }
+        });
+
+        priceTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Kunde ID:");
+
+        jLabel7.setText("Salgsmedarbejder ID:");
+
+        jLabel8.setText("Start dato:");
+
+        jLabel9.setText("Slut dato:");
+
+        jLabel10.setText("Pris:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(customerIdTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                .addComponent(salesIdTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(priceTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(endDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(startDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(70, 70, 70))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(customerIdTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(salesIdTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(startDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 39, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(endDateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(priceTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(jButton1)
+                .addGap(43, 43, 43))
+        );
+
+        jTabbedPane2.addTab("Oversigt", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,7 +323,45 @@ public class MainGUIFrame extends javax.swing.JFrame {
 
     private void createOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createOrderButtonActionPerformed
         
+        
+        int correct = JOptionPane.showConfirmDialog(rootPane, "Er disse informationer korrekte? \n"
+                                                   + "Kunde ID: " + customerIdTextField.getText()
+                                                   + "\nSalgsmedarbejder ID: "+ salesIdTextField.getText()
+                                                   + "\nStart dato: "+ startDateTextField.getText()
+                                                   + "\nSlut dato: " + endDateTextField.getText()
+                                                   + "\nPris: " + priceTextField.getText());
+        if (correct == 0) {
+            currentOrder = new Order(Integer.parseInt(customerIdTextField.getText()),
+                                     Integer.parseInt(salesIdTextField.getText()),
+                                     Integer.parseInt(startDateTextField.getText()),
+                                     false, null, null, Integer.parseInt(priceTextField.getText()));
+            
+            System.out.println("Order has been created! (remember to save it) mwehehe"
+                              +"\n"+currentOrder);
+        }
+        
+        
     }//GEN-LAST:event_createOrderButtonActionPerformed
+
+    private void customerIdTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIdTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerIdTextField1ActionPerformed
+
+    private void salesIdTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesIdTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salesIdTextField1ActionPerformed
+
+    private void startDateTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startDateTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startDateTextField1ActionPerformed
+
+    private void endDateTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endDateTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_endDateTextField1ActionPerformed
+
+    private void priceTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,17 +401,28 @@ public class MainGUIFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createOrderButton;
     private javax.swing.JTextField customerIdTextField;
+    private javax.swing.JTextField customerIdTextField1;
     private javax.swing.JTextField endDateTextField;
+    private javax.swing.JTextField endDateTextField1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JPanel orderTab;
     private javax.swing.JTextField priceTextField;
+    private javax.swing.JTextField priceTextField1;
     private javax.swing.JTextField salesIdTextField;
+    private javax.swing.JTextField salesIdTextField1;
     private javax.swing.JTextField startDateTextField;
+    private javax.swing.JTextField startDateTextField1;
     // End of variables declaration//GEN-END:variables
 }
