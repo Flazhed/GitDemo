@@ -40,6 +40,15 @@ public class Order {
     }
     
     
+    public int getBoolToInt(){
+        
+        if(comfirmed){
+            return 1;
+        }
+        else return 0;
+        
+    }
+    
     public void addDetail(OrderDetail od){
         orderDetails.add(od);
     }
