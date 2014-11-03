@@ -6,6 +6,7 @@
 package domain;
 
 import dataSource.DBFacade;
+import java.sql.Date;
 
 /**
  *
@@ -35,8 +36,14 @@ public class Controller {
         return dbf.getOrder(orderID);
     }
 
-    public boolean insertOrder(Order o) {
+    public boolean insertOrder(int orderID, int cusomerID, int salesID, boolean confirmed,
+                               Date startDate, Date endDate, float price)
+    {
+   
+        Order o = new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);
         return dbf.insertOrder(o);
     }
-
+    
+    
+   
 }
