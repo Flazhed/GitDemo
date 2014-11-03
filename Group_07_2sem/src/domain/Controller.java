@@ -36,14 +36,15 @@ public class Controller {
         return dbf.getOrder(orderID);
     }
 
-    public boolean insertOrder(int orderID, int cusomerID, int salesID, boolean confirmed,
-                               Date startDate, Date endDate, float price)
-    {
-   
-        Order o = new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);
+    public boolean insertOrder(Order o) {
+
         return dbf.insertOrder(o);
     }
-    
-    
-   
+
+    public Order createNewOrder(int orderID, int cusomerID, int salesID, boolean confirmed,
+            Date startDate, Date endDate, float price) {
+        Order o = new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);
+        return o;
+    }
+
 }
