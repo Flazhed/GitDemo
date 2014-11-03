@@ -16,6 +16,8 @@ public class ConsoleGUI {
     public static void main(String[] args) {
         Controller con = Controller.getInstance();
         System.out.println(con.getOrder(1111).toString());
+        
+      
     }
     
 }
