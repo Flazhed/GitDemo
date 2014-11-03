@@ -10,7 +10,9 @@ package domain;
  * @author Uffe
  */
 public class OrderDetail {
+
     //Tilføj storage ID og fix toString
+
     private int orderID;
     private int resourceID;
     private int storageID;
@@ -23,11 +25,19 @@ public class OrderDetail {
         this.qty = qty;
     }
 
+    public int getStorageID() {
+        return storageID;
+    }
+
+    public void setStorageID(int storageID) {
+        this.storageID = storageID;
+    }
+
     @Override
     public String toString() {
         return "OrderID: " + orderID + ", resourceID: " + resourceID + ", StorageID: " + storageID + ", qty: " + qty + '}';
     }
-    
+
     public int getOrderID() {
         return orderID;
     }
@@ -51,7 +61,5 @@ public class OrderDetail {
     public void setQty(int qty) {
         this.qty = qty;
     }
-    
-    
-    
+
 }
