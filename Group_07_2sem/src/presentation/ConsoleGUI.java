@@ -5,7 +5,8 @@
  */
 package presentation;
 
-import domain.Controller;
+import domain.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,9 +15,13 @@ import domain.Controller;
 public class ConsoleGUI {
     
     public static void main(String[] args) {
+        ArrayList<OrderDetail> odl = new ArrayList<OrderDetail>();
         Controller con = Controller.getInstance();
         System.out.println(con.getOrder(1111).toString());
-        
+        Order o = con.getOrder(1111);
+        odl.add(con.createNewOrderDetail(1111, 3, 1, 5));
+        con.insertOrderDetails(odl);
+        System.out.println(con.getOrder(1111).toString());
       
     }
     

@@ -7,6 +7,8 @@ package domain;
 
 import dataSource.DBFacade;
 import java.sql.Date;
+import java.util.ArrayList;
+import oracle.net.aso.o;
 
 /**
  *
@@ -41,8 +43,8 @@ public class Controller {
         return dbf.insertOrder(o);
     }
 
-    public boolean insertOrderDetails(Order o){
-        return dbf.insertOrderDetails(o);
+    public boolean insertOrderDetails(ArrayList<OrderDetail> odl){
+        return dbf.insertOrderDetails(odl);
         
     }
     
@@ -50,6 +52,12 @@ public class Controller {
             Date startDate, Date endDate, float price) {
         Order o = new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);
         return o;
+    }
+    
+    public OrderDetail createNewOrderDetail(int orderID, int ressourceID, int storageID, int qty){
+        //Ved fremtidig version skal Order O ikke med. aktiv order ligger i controller
+        OrderDetail od = (new OrderDetail(orderID, ressourceID, storageID, qty));
+        return od;
     }
 
 }
