@@ -138,12 +138,12 @@ public class OrderMapper {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Statement.Close " + e);
+                System.out.println("ERROR in OrderMapper - getOrder.Finally.Statement.Close " + e);
             }
             try {
                 con.close();
             } catch (Exception e) {
-                System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Connection.Close " + e);
+                System.out.println("ERROR in OrderMapper - getOrder.Finally.Connection.Close " + e);
             }
         }
 
