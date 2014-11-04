@@ -59,7 +59,13 @@ public class Controller {
 
         return dbf.insertOrder(o);
     }
-
+    public boolean insertCustomer(Customer c){
+        
+        return dbf.insertCustomer(c);
+    }
+    public Customer getCustomer(int customerID){
+        return dbf.getCustomer(customerID);
+    }
     public boolean insertOrderDetails(ArrayList<OrderDetail> odl) {
         return dbf.insertOrderDetails(odl);
 
@@ -83,5 +89,6 @@ public class Controller {
         LogicClass lc = new LogicClass();
         return lc.checkRessourceAvailability(resType, startDate, endDate, requestedQty, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
     }
+    
 
 }
