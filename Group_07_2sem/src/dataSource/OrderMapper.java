@@ -58,7 +58,7 @@ public class OrderMapper {
         }
         return rowInserted == 1;
     }
-
+    
     public boolean insertOrderDetails(ArrayList<OrderDetail> odl, Connection con) {
         int rowInserted = 0;
         String SQLString = "INSERT INTO Orderdetails "
