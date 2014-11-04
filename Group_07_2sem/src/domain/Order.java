@@ -6,15 +6,15 @@
 package domain;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-
 
 /**
  *
  * @author Uffe
  */
 public class Order {
+
     private int orderID;
     private int customerID; //skal laves om til Customer Object senere
     private int salesID; // skal laves om til Salesman Object senere
@@ -24,11 +24,9 @@ public class Order {
     private float price;
     private ArrayList<OrderDetail> orderDetails;
 
-    
-    
     // OBS! Customer og Salesman er ikke Objecter, men Integer. (skal laves om)
-    public Order(int orderID, int customerID, int salesID, boolean comfirmed, 
-                 Date startDate, Date endDate, float price) {
+    public Order(int orderID, int customerID, int salesID, boolean comfirmed,
+            Date startDate, Date endDate, float price) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.salesID = salesID;
@@ -38,40 +36,47 @@ public class Order {
         this.price = price;
         orderDetails = new ArrayList();
     }
-    
-    
-    public int getBoolToInt(){
-        
-        if(comfirmed){
+
+    public String formatDateToString(Date date) {
+
+        String DATE_FORMAT_NOW = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+        String stringDate = sdf.format(date);
+        return stringDate;
+    }
+
+    public int getBoolToInt() {
+
+        if (comfirmed) {
             return 1;
+        } else {
+            return 0;
         }
-        else return 0;
-        
+
     }
 
     public ArrayList<OrderDetail> getOrderDetails() {
         return orderDetails;
     }
-    
-    public void addDetail(OrderDetail od){
+
+    public void addDetail(OrderDetail od) {
         orderDetails.add(od);
     }
-    
+
     @Override
     public String toString() {
-        String str   = "orderID: " + orderID+ ", customerID: " + customerID + ", salesID: "
-                     + salesID  + ", price: " + price + ", comfirmed: " + comfirmed
-                     + ", startDate: " + startDate + ", endDate: " + endDate
-                     + "\nOrder Details:\n";
-        
+        String str = "orderID: " + orderID + ", customerID: " + customerID + ", salesID: "
+                + salesID + ", price: " + price + ", comfirmed: " + comfirmed
+                + ", startDate: " + startDate + ", endDate: " + endDate
+                + "\nOrder Details:\n";
+
         for (OrderDetail orderDetail : orderDetails) {
-            str = str + orderDetail+"\n";
+            str = str + orderDetail + "\n";
         }
-        
+
         return str;
     }
-    
-    
+
     public int getOrderID() {
         return orderID;
     }
@@ -127,7 +132,5 @@ public class Order {
     public void setSalesID(int salesID) {
         this.salesID = salesID;
     }
-    
-    
-     
+
 }
