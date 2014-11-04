@@ -36,7 +36,7 @@ public class Controller {
     }
 
     public Date formatStringToDate(String inputDate) {
-
+        //SKAL DENNE LIGGE I CONTROL????
         java.sql.Date sqlStartDate = null;
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");

@@ -348,7 +348,6 @@ public class MainGUIFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void priceTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_priceTextFieldActionPerformed
 
     private void endDateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endDateTextFieldActionPerformed
@@ -368,34 +367,51 @@ public class MainGUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_customerIdTextFieldActionPerformed
 
     private void createOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createOrderButtonActionPerformed
+            
+        Date startDate = null;
+        Date endDate = null;
+        if (startDateTextField.getText().length()  == 10  && 
+            startDateTextField.getText().charAt(2) == '-' &&
+            startDateTextField.getText().charAt(5) == '-' &&
+            endDateTextField.getText().length()  == 10  && 
+            endDateTextField.getText().charAt(2) == '-' &&
+            endDateTextField.getText().charAt(5) == '-')
+        {
+            startDate = control.formatStringToDate(startDateTextField.getText());
+            endDate = control.formatStringToDate(endDateTextField.getText()); 
         
-        try{
-        Date startDate;
-        Date endDate;
+            try{
         
         int correct = JOptionPane.showConfirmDialog(rootPane, "Er disse informationer korrekte? \n"
+                                    + "Ordre ID:                       " + orderIdTextField.getText()
                                     + "Kunde ID:                       " + customerIdTextField.getText()
                                     + "\nSalgsmedarbejder ID: "+ salesIdTextField.getText()
                                     + "\nStart dato:                      "+ startDateTextField.getText()
                                     + "\nSlut dato:                        " + endDateTextField.getText()
                                     + "\nPris:                                " + priceTextField.getText());
+        
         if (correct == 0) {
-            startDate = control.formatStringToDate(startDateTextField.getText());
-            endDate = control.formatStringToDate(endDateTextField.getText());
             currentOrder = new Order(Integer.parseInt(orderIdTextField.getText()),
                                      Integer.parseInt(customerIdTextField.getText()),
                                      Integer.parseInt(salesIdTextField.getText()),
                                      false, startDate, endDate,
                                      Integer.parseInt(priceTextField.getText()));
-            // Start og slut dato er sat til "null" fix plox
             System.out.println("Order has been created! (remember to save it) mwehehe"
                               +"\n"+currentOrder);
         }
         }
         catch(Exception e){
-            System.out.println("NÆÆÆÆÆÆÆ DET GIK GALT");
+            System.out.println("Ordren blev IKKE oprettet!");
         }
         
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Dato formatet skal skrives således: DD-MM-YYYY");
+        }
+        
+        
+        
+        clearOrderTabTextFields();
     }//GEN-LAST:event_createOrderButtonActionPerformed
 
     private void fullNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullNameTextFieldActionPerformed
@@ -444,11 +460,12 @@ public class MainGUIFrame extends javax.swing.JFrame {
             System.out.println("DET GIK GALT!!!!");
         }
         
-        
+        clearCustomerTabTextFields();
     }//GEN-LAST:event_createCustomerButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+        
+        control.insertOrder(currentOrder);
          
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -485,6 +502,22 @@ public class MainGUIFrame extends javax.swing.JFrame {
                 new MainGUIFrame().setVisible(true);
             }
         });
+    }
+    private void clearOrderTabTextFields(){
+        orderIdTextField.setText("");
+        customerIdTextField.setText("");
+        salesIdTextField.setText("");
+        startDateTextField.setText("");
+        endDateTextField.setText("");
+        priceTextField.setText("");
+    }
+    private void clearCustomerTabTextFields(){
+        customerIdTextField2.setText("");
+        fullNameTextField.setText("");
+        companyNameTextField.setText("");
+        adressTextFIeld.setText("");
+        zipCodeTextField.setText("");
+        phoneNoTextField.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
