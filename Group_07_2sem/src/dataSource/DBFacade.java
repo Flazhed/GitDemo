@@ -9,6 +9,7 @@ import domain.Order;
 import domain.OrderDetail;
 import java.sql.Connection;
 import java.util.ArrayList;
+import oracle.net.aso.o;
 
 /**
  *
@@ -45,8 +46,8 @@ public class DBFacade {
         return om.insertOrder(o, con);
     }
 
-    public boolean insertOrderDetails(Order o) {
-        return om.insertOrderDetails(o.getOrderDetails(), con);
+    public boolean insertOrderDetails(ArrayList<OrderDetail> odl) {
+        return om.insertOrderDetails(odl, con);
     }
 
 }

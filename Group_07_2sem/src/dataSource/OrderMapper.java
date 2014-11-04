@@ -59,30 +59,31 @@ public class OrderMapper {
 
     public boolean insertOrderDetails(ArrayList<OrderDetail> odl, Connection con) {
         int rowInserted = 0;
-
         String SQLString = "INSERT INTO Orderdetails "
                 + "VALUES (?,?,?,?)";
 
         PreparedStatement statement = null;
-
+        System.out.println(odl.get(0).getOrderID() + " "+ odl.get(0).getResourceID() + " " + odl.get(0).getStorageID() + " " + odl.get(0).getQty());
         try {
             statement = con.prepareStatement(SQLString);
 
             for (int i = 0; i < odl.size(); i++) {
-
+                
                 OrderDetail od = odl.get(i);
 
                 statement.setInt(1, od.getOrderID());
                 statement.setInt(2, od.getResourceID());
                 statement.setInt(3, od.getStorageID());
                 statement.setInt(4, od.getQty());
+                System.out.println("snaps");
                 rowInserted += statement.executeUpdate();
+                System.out.println("asd");
             }
 
         } catch (SQLException e) {
             System.out.println("ERROR in OrderMapper - InsertOrderDetails " + e);
         }
-
+        
         return rowInserted == odl.size();
     }
 
@@ -94,7 +95,7 @@ public class OrderMapper {
                 + "FROM Orders "
                 + "WHERE OrderID = ?";
 
-        String SQLString2 = "SELECT od.RessourceID, od.qty "
+        String SQLString2 = "SELECT od.RessourceID, od.StorageID, od.qty "
                 + "FROM OrderDetails od "
                 + "WHERE od.OrderID = ?";
 
