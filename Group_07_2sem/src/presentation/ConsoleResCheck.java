@@ -16,7 +16,7 @@ public class ConsoleResCheck {
     public static void main(String[] args) {
         
         Controller con = Controller.getInstance();
-        con.checkRessourceAvailability(1);
+        con.checkRessourceAvailability(111);
         
     }
     

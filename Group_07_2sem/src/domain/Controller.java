@@ -36,7 +36,7 @@ public class Controller {
     }
 
     public Date formatStringToDate(String inputDate) {
-
+        //SKAL DENNE LIGGE I CONTROL????
         java.sql.Date sqlStartDate = null;
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
@@ -80,7 +80,7 @@ public class Controller {
     public void checkRessourceAvailability(int resType){
         //LogicClass er ikke holdbar. Find ud af hvor den skal ligge.
         LogicClass lc = new LogicClass();
-        lc.checkRessourceAvailability(1, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
+        lc.checkRessourceAvailability(resType, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
     } 
 
 }
