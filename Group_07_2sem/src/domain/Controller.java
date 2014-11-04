@@ -7,8 +7,8 @@ package domain;
 
 import dataSource.DBFacade;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import oracle.net.aso.o;
 
 /**
  *
@@ -33,6 +33,21 @@ public class Controller {
 
     }
 
+    public Date formatStringToDate(String inputDate) {
+
+        java.sql.Date sqlStartDate = null;
+
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            java.util.Date date = sdf1.parse(inputDate);
+            sqlStartDate = new java.sql.Date(date.getTime());
+        } catch (Exception e) {
+            System.out.println("ERROR in formatStringToDate " + e);
+        }
+
+        return sqlStartDate;
+    }
+
     public Order getOrder(int orderID) {
 
         return dbf.getOrder(orderID);
@@ -43,18 +58,18 @@ public class Controller {
         return dbf.insertOrder(o);
     }
 
-    public boolean insertOrderDetails(ArrayList<OrderDetail> odl){
+    public boolean insertOrderDetails(ArrayList<OrderDetail> odl) {
         return dbf.insertOrderDetails(odl);
-        
+
     }
-    
+
     public Order createNewOrder(int orderID, int cusomerID, int salesID, boolean confirmed,
             Date startDate, Date endDate, float price) {
         Order o = new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);
         return o;
     }
-    
-    public OrderDetail createNewOrderDetail(int orderID, int ressourceID, int storageID, int qty){
+
+    public OrderDetail createNewOrderDetail(int orderID, int ressourceID, int storageID, int qty) {
         //Ved fremtidig version skal Order O ikke med. aktiv order ligger i controller
         OrderDetail od = (new OrderDetail(orderID, ressourceID, storageID, qty));
         return od;
