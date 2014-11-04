@@ -37,7 +37,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="orderTab">
+        <Container class="javax.swing.JPanel" name="createOrderTab">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -45,8 +45,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Ordre">
-                <Property name="tabTitle" type="java.lang.String" value="Ordre"/>
+              <JTabbedPaneConstraints tabName="Opret Ordre">
+                <Property name="tabTitle" type="java.lang.String" value="Opret Ordre"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -55,38 +55,49 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="priceTextField" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="endDateTextField" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="startDateTextField" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="salesIdTextField" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="customerIdTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="priceTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <Component id="endDateTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <Component id="startDateTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <Component id="salesIdTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <Component id="customerIdTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="createOrderButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="createOrderButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="orderIdTextField" min="-2" pref="59" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -95,7 +106,12 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="orderIdTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="customerIdTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -120,7 +136,7 @@
                           <Component id="priceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
                       <Component id="createOrderButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
@@ -186,13 +202,25 @@
                 <Property name="text" type="java.lang.String" value="Pris:"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel12">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ordre ID:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="orderIdTextField">
+            </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="createCustomerTab">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Oversigt">
-                <Property name="tabTitle" type="java.lang.String" value="Oversigt"/>
+              <JTabbedPaneConstraints tabName="Opret Kunde">
+                <Property name="tabTitle" type="java.lang.String" value="Opret Kunde"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -200,91 +228,167 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="customerIdTextField1" min="-2" pref="59" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="65" max="32767" attributes="0"/>
-                                      <Component id="salesIdTextField1" min="-2" pref="59" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="priceTextField1" min="-2" pref="59" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="endDateTextField1" min="-2" pref="59" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="startDateTextField1" min="-2" pref="59" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="phoneNoTextField" pref="106" max="32767" attributes="0"/>
+                          <Component id="zipCodeTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="adressTextFIeld" alignment="0" max="32767" attributes="0"/>
+                          <Component id="companyNameTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="customerIdTextField2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="fullNameTextField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace pref="89" max="32767" attributes="0"/>
+                      <Component id="createCustomerButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="customerIdTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="salesIdTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="startDateTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="endDateTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="customerIdTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="priceTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fullNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="companyNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="adressTextFIeld" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="zipCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="phoneNoTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <Component id="createCustomerButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="fullNameTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fullNameTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="companyNameTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="companyNameTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="zipCodeTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="zipCodeTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="adressTextFIeld">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adressTextFIeldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="phoneNoTextField">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phoneNoTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fulde Navn"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Firma Navn"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Post Nr."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adresse"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tlf. Nr."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="customerIdTextField2">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kunde ID"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="createCustomerButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Opret Kunde"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createCustomerButtonActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="tab3">
+                <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="166" max="32767" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -292,58 +396,11 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="gem banditten"/>
+                <Property name="text" type="java.lang.String" value="Gem i Database"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="customerIdTextField1">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerIdTextField1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="salesIdTextField1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salesIdTextField1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="startDateTextField1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startDateTextField1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="endDateTextField1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endDateTextField1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="priceTextField1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="priceTextField1ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kunde ID:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Salgsmedarbejder ID:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Start dato:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Slut dato:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel10">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pris:"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
