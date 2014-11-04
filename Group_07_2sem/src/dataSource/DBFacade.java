@@ -5,11 +5,11 @@
  */
 package dataSource;
 
+import domain.Customer;
 import domain.Order;
 import domain.OrderDetail;
 import java.sql.Connection;
 import java.util.ArrayList;
-import oracle.net.aso.o;
 
 /**
  *
@@ -19,12 +19,14 @@ public class DBFacade {
 
     private Connection con;
     private OrderMapper om;
+    private CustomerMapper cm;
     //== Singleton start
     private static DBFacade instance;
 
     private DBFacade() {
         //MAPPERS START
         om = new OrderMapper();
+        cm = new CustomerMapper();
         //MAPPERS END
         con = DBConnector.getInstance().getConnection();
 
@@ -49,5 +51,12 @@ public class DBFacade {
     public boolean insertOrderDetails(ArrayList<OrderDetail> odl) {
         return om.insertOrderDetails(odl, con);
     }
-
+    public boolean insertCustomer(Customer c){
+        return cm.insertCustomer(c, con);
+    }
+    
+    public Customer getCustomer(int customerID){
+        return cm.getCustomer(customerID, con);
+    }
+    
 }
