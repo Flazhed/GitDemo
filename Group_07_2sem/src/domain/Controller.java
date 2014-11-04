@@ -84,11 +84,19 @@ public class Controller {
     }
     
     public boolean checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty){
-
+        //ALT SKAL VÆRE RESTYPEID ikke RESTYPE
+        //FLYT METODE VÆK FRA CONTROLLER OG LOGICCLASS VÆK FRA DOMAINLAYER
         //LogicClass er ikke holdbar. Find ud af hvor den skal ligge.
         LogicClass lc = new LogicClass();
         return lc.checkRessourceAvailability(resType, startDate, endDate, requestedQty, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
     }
     
+    
+    public boolean verifyRessourceBooking(int resTypeID, Order o, int requestedQty){
+        
+        return checkRessourceAvailability(resTypeID, null, null, requestedQty);
+        
+        
+    }
 
 }

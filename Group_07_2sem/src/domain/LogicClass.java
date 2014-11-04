@@ -64,9 +64,9 @@ public class LogicClass {
             statement = con.prepareStatement(SQLString1);
             statement.setInt(1, resType);
             ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 totalStorageQty += rs.getInt(1);
-                System.out.println("Qty for restype(" + resType + ") is " + rs.getInt(1) + " on all storages");
+                
             }
         } catch (Exception e) {
             System.out.println("Fail2 " + e.toString());
@@ -77,7 +77,7 @@ public class LogicClass {
                 System.out.println("Fail3 " + e.toString());
             }
         }
-
+        System.out.println("Qty for restype(" + resType + ") is " + totalStorageQty + " on all storages");
         if (requestedQty <= (totalStorageQty - bookedQty)) {
             System.out.println("Der er nok");
             return true;
