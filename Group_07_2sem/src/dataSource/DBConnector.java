@@ -17,8 +17,8 @@ public class DBConnector {
     
     private static String driver = "oracle.jdbc.driver.OracleDriver";
     private static String URL = "jdbc:oracle:thin:@datdb.cphbusiness.dk:1521:dat";
-    private static String id = "SEM2_TEST_GR10";			//Insert Your ORACLE id and password
-    private static String pw = "SEM2_TEST_GR10";
+    private static String id = "cphsl159";			//Insert Your ORACLE id and password
+    private static String pw = "cphsl159";
     
     private Connection con;
 
