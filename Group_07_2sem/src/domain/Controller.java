@@ -77,10 +77,11 @@ public class Controller {
         return od;
     }
     
-    public void checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty){
+    public boolean checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty){
+
         //LogicClass er ikke holdbar. Find ud af hvor den skal ligge.
         LogicClass lc = new LogicClass();
-        lc.checkRessourceAvailability(resType, startDate, endDate, requestedQty, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
-    } 
+        return lc.checkRessourceAvailability(resType, startDate, endDate, requestedQty, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
+    }
 
 }
