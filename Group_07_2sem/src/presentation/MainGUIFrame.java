@@ -8,6 +8,7 @@ package presentation;
 import domain.Controller;
 import domain.Customer;
 import domain.Order;
+import domain.OrderDetail;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
  * @author Uffe & Mads
  */
 public class MainGUIFrame extends javax.swing.JFrame {
+  OrderDetail currentDetail; // denne skal laves om, kun midlertidig.
   Customer currentCustomer; // denne skal laves om, kun midlertidig.
   Order currentOrder; // denne skal laves om, kun midlertidig.
   Controller control;
@@ -26,6 +28,12 @@ public class MainGUIFrame extends javax.swing.JFrame {
         initComponents();
         control = Controller.getInstance();
         
+        // VIL BLIVE LAVET AF METODE SENERE
+        dropDownRes.add("Lille Stang");
+        dropDownRes.add("Medium Stang");
+        dropDownRes.add("Stor Stang");
+        dropDownRes.add("1337 Stang");
+        // VIL BLIVE LAVET AF METODE SENERE
         }
 
     /**
@@ -52,6 +60,17 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         orderIdTextField = new javax.swing.JTextField();
+        createOrderDetailsTab = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        orderIdLabel = new javax.swing.JLabel();
+        addDetailsToListButton = new javax.swing.JButton();
+        resourceAmountTextField = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        dropDownRes = new java.awt.Choice();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resourceListTextArea = new javax.swing.JTextArea();
+        jLabel15 = new javax.swing.JLabel();
+        saveListButton = new javax.swing.JButton();
         createCustomerTab = new javax.swing.JPanel();
         fullNameTextField = new javax.swing.JTextField();
         companyNameTextField = new javax.swing.JTextField();
@@ -129,36 +148,37 @@ public class MainGUIFrame extends javax.swing.JFrame {
             .addGroup(createOrderTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(createOrderTabLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createOrderTabLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(createOrderButton)
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createOrderTabLayout.createSequentialGroup()
                         .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createOrderTabLayout.createSequentialGroup()
-                                .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(createOrderTabLayout.createSequentialGroup()
-                                        .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
-                                        .addGap(65, 65, 65))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, createOrderTabLayout.createSequentialGroup()
-                                        .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addGroup(createOrderTabLayout.createSequentialGroup()
                                 .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(endDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(startDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(salesIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customerIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                                .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createOrderTabLayout.createSequentialGroup()
+                                        .addGap(108, 108, 108)
+                                        .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(endDateTextField)
+                                            .addGroup(createOrderTabLayout.createSequentialGroup()
+                                                .addComponent(startDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(priceTextField)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(customerIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                        .addComponent(orderIdTextField))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createOrderTabLayout.createSequentialGroup()
-                                .addComponent(createOrderButton)
-                                .addGap(77, 77, 77))))
-                    .addGroup(createOrderTabLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(orderIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(salesIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         createOrderTabLayout.setVerticalGroup(
@@ -194,6 +214,83 @@ public class MainGUIFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Opret Ordre", createOrderTab);
+
+        createOrderDetailsTab.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel13.setText("Ordre ID:");
+
+        addDetailsToListButton.setText("Tilføj til listen");
+        addDetailsToListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDetailsToListButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Antal:");
+
+        resourceListTextArea.setColumns(20);
+        resourceListTextArea.setRows(5);
+        jScrollPane1.setViewportView(resourceListTextArea);
+
+        jLabel15.setText("Vælg Ressource:");
+
+        saveListButton.setText("Gem listen");
+
+        javax.swing.GroupLayout createOrderDetailsTabLayout = new javax.swing.GroupLayout(createOrderDetailsTab);
+        createOrderDetailsTab.setLayout(createOrderDetailsTabLayout);
+        createOrderDetailsTabLayout.setHorizontalGroup(
+            createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                        .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                                .addComponent(addDetailsToListButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(saveListButton))
+                            .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(resourceAmountTextField)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(dropDownRes, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(orderIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 41, Short.MAX_VALUE))))
+        );
+        createOrderDetailsTabLayout.setVerticalGroup(
+            createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(orderIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addGap(5, 5, 5)
+                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resourceAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dropDownRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addDetailsToListButton)
+                    .addComponent(saveListButton))
+                .addGap(54, 54, 54))
+        );
+
+        jTabbedPane2.addTab("Tilføj Ressourcer", createOrderDetailsTab);
 
         createCustomerTab.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -268,10 +365,10 @@ public class MainGUIFrame extends javax.swing.JFrame {
                     .addComponent(customerIdTextField2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fullNameTextField, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createCustomerTabLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+            .addGroup(createCustomerTabLayout.createSequentialGroup()
+                .addGap(103, 103, 103)
                 .addComponent(createCustomerButton)
-                .addGap(66, 66, 66))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         createCustomerTabLayout.setVerticalGroup(
             createCustomerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,12 +397,14 @@ public class MainGUIFrame extends javax.swing.JFrame {
                 .addGroup(createCustomerTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
                 .addComponent(createCustomerButton)
-                .addGap(42, 42, 42))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Opret Kunde", createCustomerTab);
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jButton1.setText("Gem i Database");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -318,26 +417,28 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(149, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(93, 93, 93))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(154, 154, 154)
                 .addComponent(jButton1)
-                .addGap(155, 155, 155))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("tab3", jPanel1);
+        jTabbedPane2.addTab("Gem", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,7 +485,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
         
         int correct = JOptionPane.showConfirmDialog(rootPane, "Er disse informationer korrekte? \n"
                                     + "Ordre ID:                       " + orderIdTextField.getText()
-                                    + "Kunde ID:                       " + customerIdTextField.getText()
+                                    + "\nKunde ID:                       " + customerIdTextField.getText()
                                     + "\nSalgsmedarbejder ID: "+ salesIdTextField.getText()
                                     + "\nStart dato:                      "+ startDateTextField.getText()
                                     + "\nSlut dato:                        " + endDateTextField.getText()
@@ -398,6 +499,11 @@ public class MainGUIFrame extends javax.swing.JFrame {
                                      Integer.parseInt(priceTextField.getText()));
             System.out.println("Order has been created! (remember to save it) mwehehe"
                               +"\n"+currentOrder);
+        
+            orderIdLabel.setText(currentOrder.getOrderID()+"");
+        }
+        else{
+            System.out.println("Ordren blev IKKE oprettet!");
         }
         }
         catch(Exception e){
@@ -464,10 +570,40 @@ public class MainGUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_createCustomerButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        if (currentOrder != null) {
         control.insertOrder(currentOrder);
+        }
+        if(currentCustomer != null){
+        control.insertCustomer(currentCustomer);
+        }
          
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void addDetailsToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsToListButtonActionPerformed
+            int resId = 0;
+            if (dropDownRes.getSelectedItem().equalsIgnoreCase("Stor Stang")) 
+            {
+                resId = 3;
+            }
+            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Medium Stang")) 
+            {
+                resId = 2;
+            }
+            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Lille Stang")) 
+            {
+                resId = 1;
+            }
+            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("1337 Stang")) 
+            {
+                resId = 4;
+            }
+            currentDetail = new OrderDetail(currentOrder.getOrderID(), resId, 1, 
+                                            Integer.parseInt(resourceAmountTextField.getText()));
+            resourceListTextArea.setText(resourceListTextArea.getText()+currentDetail+"\n");
+            currentOrder.addDetail(currentDetail);
+            
+            // Dette er ikke en brugbar transaktion!
+    }//GEN-LAST:event_addDetailsToListButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -521,14 +657,17 @@ public class MainGUIFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addDetailsToListButton;
     private javax.swing.JTextField adressTextFIeld;
     private javax.swing.JTextField companyNameTextField;
     private javax.swing.JButton createCustomerButton;
     private javax.swing.JPanel createCustomerTab;
     private javax.swing.JButton createOrderButton;
+    private javax.swing.JPanel createOrderDetailsTab;
     private javax.swing.JPanel createOrderTab;
     private javax.swing.JTextField customerIdTextField;
     private javax.swing.JTextField customerIdTextField2;
+    private java.awt.Choice dropDownRes;
     private javax.swing.JTextField endDateTextField;
     private javax.swing.JTextField fullNameTextField;
     private javax.swing.JButton jButton1;
@@ -536,6 +675,9 @@ public class MainGUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -545,11 +687,16 @@ public class MainGUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel orderIdLabel;
     private javax.swing.JTextField orderIdTextField;
     private javax.swing.JTextField phoneNoTextField;
     private javax.swing.JTextField priceTextField;
+    private javax.swing.JTextField resourceAmountTextField;
+    private javax.swing.JTextArea resourceListTextArea;
     private javax.swing.JTextField salesIdTextField;
+    private javax.swing.JButton saveListButton;
     private javax.swing.JTextField startDateTextField;
     private javax.swing.JTextField zipCodeTextField;
     // End of variables declaration//GEN-END:variables
