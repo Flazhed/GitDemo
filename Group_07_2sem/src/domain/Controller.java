@@ -5,7 +5,9 @@
  */
 package domain;
 
+import dataSource.DBConnector;
 import dataSource.DBFacade;
+import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import oracle.net.aso.o;
@@ -59,5 +61,11 @@ public class Controller {
         OrderDetail od = (new OrderDetail(orderID, ressourceID, storageID, qty));
         return od;
     }
+    
+    public void checkRessourceAvailability(int resType){
+        //LogicClass er ikke holdbar. Find ud af hvor den skal ligge.
+        LogicClass lc = new LogicClass();
+        lc.checkRessourceAvailability(1, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
+    } 
 
 }

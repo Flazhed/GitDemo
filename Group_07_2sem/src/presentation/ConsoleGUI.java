@@ -22,6 +22,7 @@ public class ConsoleGUI {
         // date(dato - 1900, month from 00(jan) to 11(dec), days 01-31)
         Date startDate = new Date(2014 - 1900, 11, 24);
         Date endDate = new Date(2015 - 1900, 00, 30);
+        
 
         con.insertOrder(con.createNewOrder(4444, 2, 22, false, startDate, endDate, 123.90f));
         System.out.println(startDate);
