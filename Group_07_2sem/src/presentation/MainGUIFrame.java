@@ -380,8 +380,8 @@ public class MainGUIFrame extends javax.swing.JFrame {
                                     + "\nSlut dato:                        " + endDateTextField.getText()
                                     + "\nPris:                                " + priceTextField.getText());
         if (correct == 0) {
-            startDate = control.KALDNYMETODEFRAMORTENHEHEHEHE(startDateTextField.getText());
-            endDate = control.KALDNYMETODEFRAMORTENHEHEHEHE(endDateTextField.getText());
+            startDate = control.formatStringToDate(startDateTextField.getText());
+            endDate = control.formatStringToDate(endDateTextField.getText());
             currentOrder = new Order(Integer.parseInt(orderIdTextField.getText()),
                                      Integer.parseInt(customerIdTextField.getText()),
                                      Integer.parseInt(salesIdTextField.getText()),
