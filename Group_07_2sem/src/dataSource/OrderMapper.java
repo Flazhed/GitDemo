@@ -48,12 +48,14 @@ public class OrderMapper {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.out.println("ERROR in OrderMapper - InsertOrder.Finally " + e);
+                System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Statement.Close " + e);
+            }
+            try {
+                con.close();
+            } catch (Exception e) {
+                System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Connection.Close " + e);
             }
         }
-
-        System.out.println("RowsInserted: " + rowInserted);
-
         return rowInserted == 1;
     }
 
@@ -63,27 +65,36 @@ public class OrderMapper {
                 + "VALUES (?,?,?,?)";
 
         PreparedStatement statement = null;
-        System.out.println(odl.get(0).getOrderID() + " "+ odl.get(0).getResourceID() + " " + odl.get(0).getStorageID() + " " + odl.get(0).getQty());
+        System.out.println(odl.get(0).getOrderID() + " " + odl.get(0).getResourceID() + " " + odl.get(0).getStorageID() + " " + odl.get(0).getQty());
         try {
             statement = con.prepareStatement(SQLString);
 
             for (int i = 0; i < odl.size(); i++) {
-                
+
                 OrderDetail od = odl.get(i);
 
                 statement.setInt(1, od.getOrderID());
                 statement.setInt(2, od.getResourceID());
                 statement.setInt(3, od.getStorageID());
                 statement.setInt(4, od.getQty());
-                System.out.println("snaps");
                 rowInserted += statement.executeUpdate();
-                System.out.println("asd");
             }
 
         } catch (SQLException e) {
             System.out.println("ERROR in OrderMapper - InsertOrderDetails " + e);
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("ERROR in OrderMapper - InsertOrderDetails.Finally.Statement.Close " + e);
+            }
+            try {
+                con.close();
+            } catch (Exception e) {
+                System.out.println("ERROR in OrderMapper - InsertOrderDetails.Finally.Connection.Close " + e);
+            }
         }
-        
+
         return rowInserted == odl.size();
     }
 
@@ -100,22 +111,22 @@ public class OrderMapper {
                 + "WHERE od.OrderID = ?";
 
 // String for orderDetails, will be inserted here.
-        PreparedStatement statment = null;
+        PreparedStatement statement = null;
         try {
-            statment = con.prepareStatement(SQLString1);
-            statment.setInt(1, orderID);
+            statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, orderID);
 
-            ResultSet rs = statment.executeQuery();
+            ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
                 boolean confirmed = (1 == rs.getInt(4));
                 o = new Order(orderID, rs.getInt(2), rs.getInt(3), confirmed, rs.getDate(5), rs.getDate(6), rs.getFloat(7));
             }
 
-            statment = con.prepareStatement(SQLString2);
-            statment.setInt(1, orderID);
+            statement = con.prepareStatement(SQLString2);
+            statement.setInt(1, orderID);
 
-            rs = statment.executeQuery();
+            rs = statement.executeQuery();
 
             while (rs.next()) {
                 o.addDetail(new OrderDetail(orderID, rs.getInt(1), rs.getInt(2), rs.getInt(3)));
@@ -124,13 +135,16 @@ public class OrderMapper {
         } catch (SQLException e) {
             System.out.println("Error in OrderMapper - getOrder " + e);
         } finally {
-
             try {
-                statment.close();
+                statement.close();
             } catch (SQLException e) {
-                System.out.println("Error in OrderMapper - getOrder.finally " + e);
+                System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Statement.Close " + e);
             }
-
+            try {
+                con.close();
+            } catch (Exception e) {
+                System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Connection.Close " + e);
+            }
         }
 
         return o;
