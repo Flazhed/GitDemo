@@ -19,16 +19,9 @@ public class ConsoleGUI {
 //        ArrayList<OrderDetail> odl = new ArrayList();
         Controller con = Controller.getInstance();
 
-        // date(dato - 1900, month from 00(jan) to 11(dec), days 01-31)
-        Date startDate = new Date(2014 - 1900, 11, 24);
-        Date endDate = new Date(2015 - 1900, 00, 30);
+        con.insertOrder(new Order(0002, 1, 11, true, con.formatStringToDate("30-10-2015"), con.formatStringToDate("30-11-2015") , 3400f));
         
-
-        con.insertOrder(con.createNewOrder(4444, 2, 22, false, startDate, endDate, 123.90f));
-        System.out.println(startDate);
-
-        System.out.println(con.getOrder(4444));
-        
+        System.out.println(con.getOrder(0002));      
         
 //        Order o = con.getOrder(1111);
 //        odl.add(con.createNewOrderDetail(1111, 3, 1, 5));
