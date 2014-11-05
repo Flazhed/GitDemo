@@ -65,10 +65,10 @@ public class Order {
 
     @Override
     public String toString() {
-        String str = "orderID: " + orderID + ", customerID: " + customerID + ", salesID: "
-                + salesID + ", price: " + price + ", comfirmed: " + comfirmed
-                + ", startDate: " + startDate + ", endDate: " + endDate
-                + "\nOrder Details:\n";
+        String str = "Ordre ID: " + orderID + ", Kunde ID: " + customerID + ", Salgsmedarbejder ID: "
+                + salesID + "\nPris: " + price + ", Depositums Betalt: " + comfirmed
+                + ", Start Dato: " + startDate + ", Slut Dato: " + endDate
+                + "\nOrder Details: \n";
 
         for (OrderDetail orderDetail : orderDetails) {
             str = str + orderDetail + "\n";
@@ -76,6 +76,8 @@ public class Order {
 
         return str;
     }
+    
+   
 
     public int getOrderID() {
         return orderID;
