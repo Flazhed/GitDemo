@@ -5,6 +5,7 @@
  */
 package domain;
 
+import dataSource.DBConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,6 +87,68 @@ public class LogicClass {
             return false;
         }
 
+    }
+    
+    public ArrayList<OrderDetail> createVerifiedOrderDetails(int resTypeID, int requestedQty, Order o){
+        
+        //Hvis der er nok på lager 1:
+        ArrayList<OrderDetail> odl = new ArrayList<>();
+        int storage1Qty = 0;
+        int ressourceID = 0;
+        int ressourceID2 = 0;
+        int storageID = 0;
+        String SQLString = "SELECT * FROM Ressources Where ressourceTypeID=? AND StorageID =1 AND qty>=?";
+        
+        PreparedStatement statement = null;
+        
+        try {
+            
+            statement = DBConnector.getInstance().getConnection().prepareStatement(SQLString);
+            statement.setInt(1, resTypeID);
+            ResultSet rs = statement.executeQuery();
+            
+            if(rs.next()){
+                ressourceID = rs.getInt(1);
+                storageID = rs.getInt(3);
+                storage1Qty = rs.getInt(4);
+            }
+        
+        } catch (Exception e) {
+            System.out.println("Error in createVerifiedOrderDetails1 " + e.toString() );
+        }
+        
+        if(storage1Qty>=requestedQty){
+            odl.add(new OrderDetail(o.getOrderID(), ressourceID, storageID, requestedQty));
+        }
+        else{
+            SQLString = "SELECT ressourceID FROM Ressources Where ressourceTypeID=? AND StorageID =2";
+            try {
+            statement = DBConnector.getInstance().getConnection().prepareStatement(SQLString);
+            statement.setInt(1, resTypeID);
+            ResultSet rs = statement.executeQuery();
+            
+            if(rs.next()){
+                ressourceID2 = rs.getInt(1);
+            }
+                
+            } catch (Exception e) {
+                System.out.println("Error in createVerifiedOrderdetail1 " + e.toString());
+            }
+            odl.add(new OrderDetail(o.getOrderID(), ressourceID, storageID, storage1Qty));
+            
+            
+        }
+        
+        //Opret orderdetail og add til liste
+        
+        //Hvis ikke
+        
+        //opret orderdetail1 og fyld ud
+        //Opret orderdetil2 og smid resten ind
+        
+        
+        
+        return null;
     }
 
 }
