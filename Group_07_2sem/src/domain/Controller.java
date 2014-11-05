@@ -105,5 +105,9 @@ public class Controller {
         return dbf.getAllCustomers();
         
     }
+    
+    public ArrayList <Order> getAllOrders (){
+        return dbf.getAllOrders();
+    }
 
 }

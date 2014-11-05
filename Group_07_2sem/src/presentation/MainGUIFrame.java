@@ -783,7 +783,13 @@ public class MainGUIFrame extends javax.swing.JFrame {
 
     private void orderListButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_orderListButtonActionPerformed
     {//GEN-HEADEREND:event_orderListButtonActionPerformed
-       
+       listAllTextArea.setText("");
+        
+        ArrayList <Order> Orders = control.getAllOrders();
+        for (Order Order1 : Orders)
+        {
+            listAllTextArea.setText(listAllTextArea.getText()+Order1+"\n");
+        }
     }//GEN-LAST:event_orderListButtonActionPerformed
 
     /**
