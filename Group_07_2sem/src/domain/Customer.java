@@ -36,7 +36,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" + "customerID=" + customerID + ", zipCode=" + zipCode + ", phoneNumber=" + phoneNumber + ", fullName=" + fullName + ", companyName=" + companyName + ", address=" + address + '}';
+        return "Kunde ID: " + customerID +", Fulde Navn: " + fullName + ", Firma Navn: " + companyName + "\nPost Nr. " + zipCode + ", Telefon Nummer: " + phoneNumber +  "Addresse: "  + address + "\n";
     }
     
     public int getCustomerID() {
