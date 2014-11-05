@@ -137,5 +137,42 @@ public class OrderMapper {
 
         return o;
     }
+    
+    
+    public ArrayList <Order> getAllOrders(Connection con){
+        
+        ArrayList <Order> tempOrders = new ArrayList();
+        
+                  String SQLString1 = "SELECT * "
+                + "FROM Orders ";
+          
+           PreparedStatement statment = null;
+        try {
+            statment = con.prepareStatement(SQLString1);
+           
 
+            ResultSet rs = statment.executeQuery();
+
+            while (rs.next()) {
+                boolean confirmed = (1==rs.getInt(4));
+                tempOrders.add(new Order(rs.getInt(1), rs.getInt(2), rs.getInt(3), confirmed, rs.getDate(5), rs.getDate(6), rs.getFloat(7))); 
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Error in OrderMapper - getAllOrders " + e);
+        } finally {
+
+            try {
+                statment.close();
+            } catch (SQLException e) {
+                System.out.println("Error in OrderMapper - getAllOrders.finally " + e);
+            }
+        
+            
+        
+        
+    }
+    return tempOrders;
+    }
 }

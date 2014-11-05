@@ -63,4 +63,7 @@ public class DBFacade {
         return cm.getAllCustomers(con);
     }
     
+    public ArrayList <Order> getAllOrders(){
+        return om.getAllOrders(con);
+    }
 }
