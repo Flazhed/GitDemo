@@ -94,7 +94,7 @@ public class Controller {
     
     public boolean verifyRessourceBooking(int resTypeID, Order o, int requestedQty){
         
-        return checkRessourceAvailability(resTypeID, null, null, requestedQty);
+        return checkRessourceAvailability(resTypeID, o.formatDateToString(o.getStartDate()), o.formatDateToString(o.getEndDate()), requestedQty);
         
         
     }
