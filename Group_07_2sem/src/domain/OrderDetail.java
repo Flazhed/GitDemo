@@ -35,7 +35,7 @@ public class OrderDetail {
 
     @Override
     public String toString() {
-        return "OrderID: " + orderID + ", resourceID: " + resourceID + ", StorageID: " + storageID + ", qty: " + qty + '}';
+        return "RessourceID: " + resourceID +", Antal: " + qty;
     }
 
     public int getOrderID() {

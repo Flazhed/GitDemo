@@ -98,5 +98,12 @@ public class Controller {
         
         
     }
+    
+    
+    public ArrayList <Customer> getAllCustomers(){
+        
+        return dbf.getAllCustomers();
+        
+    }
 
 }

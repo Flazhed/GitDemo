@@ -91,4 +91,41 @@ public class CustomerMapper {
 
         return c;
     }
+    
+    public ArrayList<Customer> getAllCustomers(Connection con){
+        
+        ArrayList <Customer> tempCustomers = new ArrayList();
+        
+          String SQLString1 = "SELECT * "
+                + "FROM Customers ";
+          
+           PreparedStatement statment = null;
+        try {
+            statment = con.prepareStatement(SQLString1);
+           
+
+            ResultSet rs = statment.executeQuery();
+
+            while (rs.next()) {
+                tempCustomers.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6))); 
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Error in CustomerMapper - getAllCustomer " + e);
+        } finally {
+
+            try {
+                statment.close();
+            } catch (SQLException e) {
+                System.out.println("Error in CustomerMapper - getAllCustomer.finally " + e);
+            }
+        
+                
+        }
+
+          
+        
+        return tempCustomers;
+    }
 }
