@@ -50,11 +50,7 @@ public class OrderMapper {
             } catch (SQLException e) {
                 System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Statement.Close " + e);
             }
-            try {
-                con.close();
-            } catch (Exception e) {
-                System.out.println("ERROR in OrderMapper - InsertOrder.Finally.Connection.Close " + e);
-            }
+
         }
         return rowInserted == 1;
     }
@@ -88,11 +84,7 @@ public class OrderMapper {
             } catch (SQLException e) {
                 System.out.println("ERROR in OrderMapper - InsertOrderDetails.Finally.Statement.Close " + e);
             }
-            try {
-                con.close();
-            } catch (Exception e) {
-                System.out.println("ERROR in OrderMapper - InsertOrderDetails.Finally.Connection.Close " + e);
-            }
+
         }
 
         return rowInserted == odl.size();
@@ -140,11 +132,7 @@ public class OrderMapper {
             } catch (SQLException e) {
                 System.out.println("ERROR in OrderMapper - getOrder.Finally.Statement.Close " + e);
             }
-            try {
-                con.close();
-            } catch (Exception e) {
-                System.out.println("ERROR in OrderMapper - getOrder.Finally.Connection.Close " + e);
-            }
+
         }
 
         return o;
