@@ -7,6 +7,7 @@ package presentation;
 
 import domain.Controller;
 import domain.Customer;
+import domain.LogicClass;
 import domain.Order;
 import domain.OrderDetail;
 import java.sql.Date;
@@ -738,24 +739,34 @@ public class MainGUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void addDetailsToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsToListButtonActionPerformed
-            int resId = 0;
+            //SYG hardcoded crime. skift snarligt
+            int resTypeID = 0;
             if (dropDownRes.getSelectedItem().equalsIgnoreCase("Stor Stang")) 
             {
-                resId = 3;
+                resTypeID = 111;
             }
             else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Medium Stang")) 
             {
-                resId = 2;
+                resTypeID = 222;
             }
             else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Lille Stang")) 
             {
-                resId = 1;
+                resTypeID = 333;
             }
             else if (dropDownRes.getSelectedItem().equalsIgnoreCase("1337 Stang")) 
             {
-                resId = 4;
+                resTypeID = 444;
             }
-            currentDetail = new OrderDetail(currentOrder.getOrderID(), resId, 1, 
+            LogicClass lc = new LogicClass(); //SLET SLET SLET. SKAL KUNNE KALDES PÅ CONTROL
+            //HIV DATES UD FRA ORDER UDEN FOR IF!!
+            if(control.checkRessourceAvailability(resTypeID, currentOrder.formatDateToString(currentOrder.getStartDate()), 
+                    currentOrder.formatDateToString(currentOrder.getEndDate()), Integer.parseInt(resourceAmountTextField.getText()))){
+                
+                control.insertOrderDetails(lc.createVerifiedOrderDetails(resTypeID, Integer.parseInt(resourceAmountTextField.getText()), currentOrder));
+                
+                
+            }
+            currentDetail = new OrderDetail(currentOrder.getOrderID(), resTypeID, 1, 
                                             Integer.parseInt(resourceAmountTextField.getText()));
             resourceListTextArea.setText(resourceListTextArea.getText()+currentDetail+"\n");
             currentOrder.addDetail(currentDetail);

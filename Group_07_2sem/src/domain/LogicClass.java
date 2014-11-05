@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class LogicClass {
 
     public boolean checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty, Connection con) {
-
+        //CONNECTION SKAL IKKE MED I PARAM, HENT FRA GETINSTANCE. SLET KALD HELE VEJEN GENNEM STRUKTUREN
         int bookedQty = 0;
         int totalStorageQty = 0;
         //startDate = "2014-01-13";
