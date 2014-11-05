@@ -155,9 +155,11 @@ public class LogicClass {
                 
                 if(rs.getInt(2)==1){
                     storage1QtyTotal = rs.getInt(1);
+                    ressourceID1 = rs.getInt(3);
                 }
                 else{
                     storage2QtyTotal = rs.getInt(1);
+                    ressourceID2 = rs.getInt(3);
                 }
                 
             }
