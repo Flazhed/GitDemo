@@ -19,7 +19,8 @@ import javax.swing.JOptionPane;
  * @author Uffe & Mads
  */
 public class MainGUIFrame extends javax.swing.JFrame {
-  OrderDetail currentDetail; // denne skal laves om, kun midlertidig.
+  
+    ArrayList<OrderDetail> currentOrderDetails; // denne skal laves om, kun midlertidig.
   Customer currentCustomer; // denne skal laves om, kun midlertidig.
   Order currentOrder; // denne skal laves om, kun midlertidig.
   Controller control;
@@ -29,7 +30,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
     public MainGUIFrame() {
         initComponents();
         control = Controller.getInstance();
-        
+        currentOrderDetails = new ArrayList();
         // VIL BLIVE LAVET AF METODE SENERE
         dropDownRes.add("Lille Stang");
         dropDownRes.add("Medium Stang");
@@ -45,8 +46,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         createOrderTab = new javax.swing.JPanel();
@@ -104,55 +104,43 @@ public class MainGUIFrame extends javax.swing.JFrame {
         createOrderTab.setBackground(new java.awt.Color(204, 204, 255));
 
         customerIdTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        customerIdTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        customerIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerIdTextFieldActionPerformed(evt);
             }
         });
 
         salesIdTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        salesIdTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        salesIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salesIdTextFieldActionPerformed(evt);
             }
         });
 
         startDateTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        startDateTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        startDateTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startDateTextFieldActionPerformed(evt);
             }
         });
 
         endDateTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        endDateTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        endDateTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 endDateTextFieldActionPerformed(evt);
             }
         });
 
         priceTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        priceTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        priceTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 priceTextFieldActionPerformed(evt);
             }
         });
 
         createOrderButton.setText("Opret Ordre");
-        createOrderButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        createOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createOrderButtonActionPerformed(evt);
             }
         });
@@ -177,10 +165,8 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jLabel12.setToolTipText("");
 
         orderIdTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        orderIdTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        orderIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderIdTextFieldActionPerformed(evt);
             }
         });
@@ -251,10 +237,8 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jLabel13.setText("Ordre ID:");
 
         addDetailsToListButton.setText("Tilføj til listen");
-        addDetailsToListButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        addDetailsToListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDetailsToListButtonActionPerformed(evt);
             }
         });
@@ -269,12 +253,15 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jLabel15.setText("Vælg Ressource:");
 
         saveListButton.setText("Gem listen");
+        saveListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveListButtonActionPerformed(evt);
+            }
+        });
 
         findOrderButton.setText("Find Ordre");
-        findOrderButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        findOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findOrderButtonActionPerformed(evt);
             }
         });
@@ -293,25 +280,27 @@ public class MainGUIFrame extends javax.swing.JFrame {
                         .addGap(41, 41, 41))
                     .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
                         .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
-                                .addComponent(resourceAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dropDownRes, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addGap(107, 107, 107)
-                                    .addComponent(jLabel15))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
-                                    .addComponent(jLabel13)
-                                    .addGap(104, 104, 104)
-                                    .addComponent(orderIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
-                                    .addComponent(findOrderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(findOrderButton))))
-                        .addContainerGap(300, Short.MAX_VALUE))))
+                                .addComponent(findOrderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(findOrderButton))
+                            .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(104, 104, 104)
+                                .addComponent(orderIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addGap(21, 21, 21))
+                                    .addGroup(createOrderDetailsTabLayout.createSequentialGroup()
+                                        .addComponent(resourceAmountTextField)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dropDownRes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(292, 292, 292))))
         );
         createOrderDetailsTabLayout.setVerticalGroup(
             createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,11 +322,11 @@ public class MainGUIFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel15)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(resourceAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dropDownRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dropDownRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(resourceAmountTextField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(createOrderDetailsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveListButton)
@@ -350,46 +339,36 @@ public class MainGUIFrame extends javax.swing.JFrame {
         createCustomerTab.setBackground(new java.awt.Color(204, 204, 204));
 
         fullNameTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        fullNameTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        fullNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fullNameTextFieldActionPerformed(evt);
             }
         });
 
         companyNameTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        companyNameTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        companyNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companyNameTextFieldActionPerformed(evt);
             }
         });
 
         zipCodeTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        zipCodeTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        zipCodeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zipCodeTextFieldActionPerformed(evt);
             }
         });
 
         adressTextFIeld.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        adressTextFIeld.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        adressTextFIeld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adressTextFIeldActionPerformed(evt);
             }
         });
 
         phoneNoTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        phoneNoTextField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        phoneNoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phoneNoTextFieldActionPerformed(evt);
             }
         });
@@ -415,10 +394,8 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jLabel11.setText("Kunde ID");
 
         createCustomerButton.setText("Opret Kunde");
-        createCustomerButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        createCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createCustomerButtonActionPerformed(evt);
             }
         });
@@ -495,10 +472,8 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         jButton1.setText("Gem i Database");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -528,28 +503,22 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jScrollPane2.setViewportView(listAllTextArea);
 
         customerListButton.setText("Kunder");
-        customerListButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        customerListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 customerListButtonActionPerformed(evt);
             }
         });
 
         orderListButton.setText("Ordre");
-        orderListButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        orderListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderListButtonActionPerformed(evt);
             }
         });
 
         resourceListButton.setText("Ressourcer");
-        resourceListButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        resourceListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resourceListButtonActionPerformed(evt);
             }
         });
@@ -741,7 +710,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
     private void addDetailsToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsToListButtonActionPerformed
             //SYG hardcoded crime. skift snarligt
             int resTypeID = 0;
-            if (dropDownRes.getSelectedItem().equalsIgnoreCase("Stor Stang")) 
+            if (dropDownRes.getSelectedItem().equalsIgnoreCase("Lille Stang")) 
             {
                 resTypeID = 111;
             }
@@ -749,7 +718,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
             {
                 resTypeID = 222;
             }
-            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Lille Stang")) 
+            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Stor Stang")) 
             {
                 resTypeID = 333;
             }
@@ -758,20 +727,18 @@ public class MainGUIFrame extends javax.swing.JFrame {
                 resTypeID = 444;
             }
             
-            //HIV DATES UD FRA ORDER UDEN FOR IF!!
             if(control.checkRessourceAvailability(resTypeID, currentOrder.formatDateToString(currentOrder.getStartDate()), 
-                    currentOrder.formatDateToString(currentOrder.getEndDate()), Integer.parseInt(resourceAmountTextField.getText()))){
+               currentOrder.formatDateToString(currentOrder.getEndDate()), Integer.parseInt(resourceAmountTextField.getText()))){
+               
+                for (OrderDetail cod : control.createVerifiedOrderDetails(resTypeID, 
+                                                      Integer.parseInt(resourceAmountTextField.getText()), currentOrder)) {
+                    currentOrderDetails.add(cod);
+                }
                 
-                control.insertOrderDetails(control.createVerifiedOrderDetails(resTypeID, Integer.parseInt(resourceAmountTextField.getText()), currentOrder));
-                
-                
+                for (OrderDetail currentOrderDetail : currentOrderDetails) {
+                    resourceListTextArea.setText(resourceListTextArea.getText()+currentOrderDetail+"\n");
+                }
             }
-            currentDetail = new OrderDetail(currentOrder.getOrderID(), resTypeID, 1, 
-                                            Integer.parseInt(resourceAmountTextField.getText()));
-            resourceListTextArea.setText(resourceListTextArea.getText()+currentDetail+"\n");
-            currentOrder.addDetail(currentDetail);
-            
-            // Dette er ikke en brugbar transaktion!
     }//GEN-LAST:event_addDetailsToListButtonActionPerformed
 
     private void findOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findOrderButtonActionPerformed
@@ -814,6 +781,15 @@ public class MainGUIFrame extends javax.swing.JFrame {
             listAllTextArea.setText(listAllTextArea.getText()+Order1+"\n");
         }
     }//GEN-LAST:event_orderListButtonActionPerformed
+
+    private void saveListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveListButtonActionPerformed
+        
+        if (currentOrderDetails!= null) {
+            
+        control.insertOrderDetails(currentOrderDetails);
+        JOptionPane.showMessageDialog(rootPane, "Ordre detaljer gemt!");
+        }
+    }//GEN-LAST:event_saveListButtonActionPerformed
 
     /**
      * @param args the command line arguments
