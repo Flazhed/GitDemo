@@ -20,6 +20,7 @@ public class DBFacade {
     private Connection con;
     private OrderMapper om;
     private CustomerMapper cm;
+    private DatabaseQueries dbq;
     //== Singleton start
     private static DBFacade instance;
 
@@ -27,6 +28,7 @@ public class DBFacade {
         //MAPPERS START
         om = new OrderMapper();
         cm = new CustomerMapper();
+        dbq = new DatabaseQueries();
         //MAPPERS END
         con = DBConnector.getInstance().getConnection();
 
@@ -65,5 +67,13 @@ public class DBFacade {
     
     public ArrayList <Order> getAllOrders(){
         return om.getAllOrders(con);
+    }
+    
+    public boolean checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty){
+        return dbq.checkRessourceAvailability(resType, startDate, endDate, requestedQty);
+    } 
+    
+    public ArrayList<OrderDetail> createVerifiedOrderDetails(int resTypeID, int requestedQty, Order o){
+        return dbq.createVerifiedOrderDetails(resTypeID, requestedQty, o);
     }
 }

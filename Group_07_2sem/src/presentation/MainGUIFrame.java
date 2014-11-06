@@ -7,7 +7,7 @@ package presentation;
 
 import domain.Controller;
 import domain.Customer;
-import domain.LogicClass;
+import dataSource.DatabaseQueries;
 import domain.Order;
 import domain.OrderDetail;
 import java.sql.Date;
@@ -757,12 +757,12 @@ public class MainGUIFrame extends javax.swing.JFrame {
             {
                 resTypeID = 444;
             }
-            LogicClass lc = new LogicClass(); //SLET SLET SLET. SKAL KUNNE KALDES PÅ CONTROL
+            
             //HIV DATES UD FRA ORDER UDEN FOR IF!!
             if(control.checkRessourceAvailability(resTypeID, currentOrder.formatDateToString(currentOrder.getStartDate()), 
                     currentOrder.formatDateToString(currentOrder.getEndDate()), Integer.parseInt(resourceAmountTextField.getText()))){
                 
-                control.insertOrderDetails(lc.createVerifiedOrderDetails(resTypeID, Integer.parseInt(resourceAmountTextField.getText()), currentOrder));
+                control.insertOrderDetails(control.createVerifiedOrderDetails(resTypeID, Integer.parseInt(resourceAmountTextField.getText()), currentOrder));
                 
                 
             }

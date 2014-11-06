@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package dataSource;
 
 import dataSource.DBConnector;
+import domain.Order;
+import domain.OrderDetail;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,9 +17,9 @@ import java.util.ArrayList;
  *
  * @author Søren
  */
-public class LogicClass {
+public class DatabaseQueries {
 
-    public boolean checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty, Connection con) {
+    public boolean checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty) {
         //CONNECTION SKAL IKKE MED I PARAM, HENT FRA GETINSTANCE. SLET KALD HELE VEJEN GENNEM STRUKTUREN
         int bookedQty = 0;
         int totalStorageQty = 0;
@@ -38,7 +40,7 @@ public class LogicClass {
         PreparedStatement statement = null;
 
         try {
-            statement = con.prepareStatement(SQLString1);
+            statement = DBConnector.getInstance().getConnection().prepareStatement(SQLString1);
             statement.setString(1, startDate);
             statement.setString(2, endDate);
             statement.setString(3, startDate);
@@ -62,7 +64,7 @@ public class LogicClass {
         //Ledig-QTY = total-QTY-used-QTY
         SQLString1 = "SELECT sum(qty) FROM Ressources WHERE ressourceTypeID=?";
         try {
-            statement = con.prepareStatement(SQLString1);
+            statement = DBConnector.getInstance().getConnection().prepareStatement(SQLString1);
             statement.setInt(1, resType);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {

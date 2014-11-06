@@ -5,6 +5,7 @@
  */
 package domain;
 
+import dataSource.DatabaseQueries;
 import dataSource.DBConnector;
 import dataSource.DBFacade;
 import java.sql.Connection;
@@ -85,19 +86,24 @@ public class Controller {
     
     public boolean checkRessourceAvailability(int resType, String startDate, String endDate, int requestedQty){
         //ALT SKAL VÆRE RESTYPEID ikke RESTYPE
-        //FLYT METODE VÆK FRA CONTROLLER OG LOGICCLASS VÆK FRA DOMAINLAYER
-        //LogicClass er ikke holdbar. Find ud af hvor den skal ligge.
-        LogicClass lc = new LogicClass();
-        return lc.checkRessourceAvailability(resType, startDate, endDate, requestedQty, DBConnector.getInstance().getConnection());//Er dette korrekt måde at hente connection?
+        
+        return dbf.checkRessourceAvailability(resType, startDate, endDate, requestedQty);
+        
+    }
+    
+    public ArrayList<OrderDetail> createVerifiedOrderDetails(int resTypeID, int requestedQty, Order o){
+        
+        return dbf.createVerifiedOrderDetails(resTypeID, requestedQty, o);
     }
     
     
-    public boolean verifyRessourceBooking(int resTypeID, Order o, int requestedQty){
-        
-        return checkRessourceAvailability(resTypeID, o.formatDateToString(o.getStartDate()), o.formatDateToString(o.getEndDate()), requestedQty);
-        
-        
-    }
+//    
+//    public boolean verifyRessourceBooking(int resTypeID, Order o, int requestedQty){
+//        
+//        return checkRessourceAvailability(resTypeID, o.formatDateToString(o.getStartDate()), o.formatDateToString(o.getEndDate()), requestedQty);
+//        
+//        
+//    }
     
     
     public ArrayList <Customer> getAllCustomers(){
