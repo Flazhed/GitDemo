@@ -63,6 +63,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         orderIdTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         createOrderDetailsTab = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         orderIdLabel = new javax.swing.JLabel();
@@ -90,14 +91,11 @@ public class MainGUIFrame extends javax.swing.JFrame {
         customerIdTextField2 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         createCustomerButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listAllTextArea = new javax.swing.JTextArea();
         customerListButton = new javax.swing.JButton();
         orderListButton = new javax.swing.JButton();
-        resourceListButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,31 +169,40 @@ public class MainGUIFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Gem i Database");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout createOrderTabLayout = new javax.swing.GroupLayout(createOrderTab);
         createOrderTab.setLayout(createOrderTabLayout);
         createOrderTabLayout.setHorizontalGroup(
             createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createOrderTabLayout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(createOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(createOrderTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(orderIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(customerIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salesIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(startDateTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(endDateTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(priceTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(createOrderTabLayout.createSequentialGroup()
+                        .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(orderIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(customerIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(salesIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(startDateTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(endDateTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(priceTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(createOrderTabLayout.createSequentialGroup()
+                        .addComponent(createOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         createOrderTabLayout.setVerticalGroup(
@@ -225,9 +232,11 @@ public class MainGUIFrame extends javax.swing.JFrame {
                 .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(createOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                .addGap(84, 84, 84))
+                .addGap(84, 84, 84)
+                .addGroup(createOrderTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(createOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Opret Ordre", createOrderTab);
@@ -469,33 +478,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Opret Kunde", createCustomerTab);
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
-
-        jButton1.setText("Gem i Database");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(327, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(93, 93, 93))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jButton1)
-                .addContainerGap(319, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("Gem", jPanel1);
+        jPanel2.setBackground(new java.awt.Color(255, 255, 153));
 
         listAllTextArea.setEditable(false);
         listAllTextArea.setColumns(20);
@@ -516,26 +499,17 @@ public class MainGUIFrame extends javax.swing.JFrame {
             }
         });
 
-        resourceListButton.setText("Ressourcer");
-        resourceListButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resourceListButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(customerListButton)
                         .addGap(110, 110, 110)
-                        .addComponent(orderListButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(resourceListButton))
+                        .addComponent(orderListButton))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -545,11 +519,10 @@ public class MainGUIFrame extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerListButton)
-                    .addComponent(resourceListButton)
                     .addComponent(orderListButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Oversigt", jPanel2);
@@ -572,7 +545,197 @@ public class MainGUIFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void orderListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderListButtonActionPerformed
+        listAllTextArea.setText("");
+
+        ArrayList <Order> Orders = control.getAllOrders();
+        for (Order Order1 : Orders)
+        {
+            listAllTextArea.setText(listAllTextArea.getText()+Order1+"\n");
+        }
+    }//GEN-LAST:event_orderListButtonActionPerformed
+
+    private void customerListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerListButtonActionPerformed
+
+        listAllTextArea.setText("");
+
+        ArrayList <Customer> Customers = control.getAllCustomers();
+        for (Customer Customer1 : Customers)
+        {
+            listAllTextArea.setText(listAllTextArea.getText()+Customer1+"\n");
+        }
+    }//GEN-LAST:event_customerListButtonActionPerformed
+
+    private void createCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustomerButtonActionPerformed
+
+        try{
+            int correct = JOptionPane.showConfirmDialog(rootPane, "Er disse informationer korrekte? \n"
+                + "Kunde ID: " + customerIdTextField2.getText()
+                + "\nFulde Navn: "+ fullNameTextField.getText()
+                + "\nFirma Navn: "+ companyNameTextField.getText()
+                + "\nAdresse: " + adressTextFIeld.getText()
+                + "\nPost Nr: " + zipCodeTextField.getText()
+                + "\nTelefon Nr: " + phoneNoTextField.getText());
+            if (correct == 0) {
+                currentCustomer = new Customer(Integer.parseInt(customerIdTextField2.getText()),
+                    fullNameTextField.getText(),
+                    companyNameTextField.getText(),
+                    adressTextFIeld.getText(),
+                    Integer.parseInt(zipCodeTextField.getText()),
+                    Integer.parseInt(phoneNoTextField.getText()));
+                System.out.println("Customer has been created! (remember to save it) mwehehe"
+                    +"\n"+currentCustomer);
+            }
+        }
+        catch(Exception e){
+            System.out.println("DET GIK GALT!!!!");
+        }
+
+        clearCustomerTabTextFields();
+    }//GEN-LAST:event_createCustomerButtonActionPerformed
+
+    private void phoneNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNoTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneNoTextFieldActionPerformed
+
+    private void adressTextFIeldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adressTextFIeldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adressTextFIeldActionPerformed
+
+    private void zipCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_zipCodeTextFieldActionPerformed
+
+    private void companyNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_companyNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_companyNameTextFieldActionPerformed
+
+    private void fullNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fullNameTextFieldActionPerformed
+
+    private void findOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findOrderButtonActionPerformed
+        try {
+            orderIdLabel.setText(control.getOrder(Integer.parseInt(findOrderTextField.getText())).getOrderID()+"");
+            currentOrder = control.getOrder(Integer.parseInt(findOrderTextField.getText()));
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_findOrderButtonActionPerformed
+
+    private void saveListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveListButtonActionPerformed
+
+        if (currentOrderDetails!= null) {
+
+            control.insertOrderDetails(currentOrderDetails);
+            JOptionPane.showMessageDialog(rootPane, "Ordre detaljer gemt!");
+        }
+
+        resourceListTextArea.setText("");
+    }//GEN-LAST:event_saveListButtonActionPerformed
+
+    private void addDetailsToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsToListButtonActionPerformed
+        //SYG hardcoded crime. skift snarligt
+        int resTypeID = 0;
+        if (dropDownRes.getSelectedItem().equalsIgnoreCase("Lille Stang"))
+        {
+            resTypeID = 111;
+        }
+        else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Medium Stang"))
+        {
+            resTypeID = 222;
+        }
+        else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Stor Stang"))
+        {
+            resTypeID = 333;
+        }
+        else if (dropDownRes.getSelectedItem().equalsIgnoreCase("1337 Stang"))
+        {
+            resTypeID = 444;
+        }
+
+        if(control.checkRessourceAvailability(resTypeID, currentOrder.formatDateToString(currentOrder.getStartDate()),
+            currentOrder.formatDateToString(currentOrder.getEndDate()), Integer.parseInt(resourceAmountTextField.getText()))){
+
+        for (OrderDetail cod : control.createVerifiedOrderDetails(resTypeID,
+            Integer.parseInt(resourceAmountTextField.getText()), currentOrder)) {
+        currentOrderDetails.add(cod);
+        }
+
+        for (OrderDetail currentOrderDetail : currentOrderDetails) {
+            resourceListTextArea.setText(resourceListTextArea.getText()+currentOrderDetail+"\n");
+        }
+        }
+    }//GEN-LAST:event_addDetailsToListButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (currentOrder != null) {
+            control.insertOrder(currentOrder);
+            JOptionPane.showMessageDialog(rootPane, "Din ordre er gemt");
+        }
+        if(currentCustomer != null){
+            control.insertCustomer(currentCustomer);
+            JOptionPane.showMessageDialog(rootPane, "Din kunde er gemt");
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void orderIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderIdTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderIdTextFieldActionPerformed
+
+    private void createOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createOrderButtonActionPerformed
+
+        Date startDate = null;
+        Date endDate = null;
+        if (startDateTextField.getText().length()  == 10  &&
+            startDateTextField.getText().charAt(2) == '-' &&
+            startDateTextField.getText().charAt(5) == '-' &&
+            endDateTextField.getText().length()  == 10  &&
+            endDateTextField.getText().charAt(2) == '-' &&
+            endDateTextField.getText().charAt(5) == '-')
+        {
+            startDate = control.formatStringToDate(startDateTextField.getText());
+            endDate = control.formatStringToDate(endDateTextField.getText());
+
+            try{
+
+                int correct = JOptionPane.showConfirmDialog(rootPane, "Er disse informationer korrekte? \n"
+                    + "Ordre ID:                       " + orderIdTextField.getText()
+                    + "\nKunde ID:                       " + customerIdTextField.getText()
+                    + "\nSalgsmedarbejder ID: "+ salesIdTextField.getText()
+                    + "\nStart dato:                      "+ startDateTextField.getText()
+                    + "\nSlut dato:                        " + endDateTextField.getText()
+                    + "\nPris:                                " + priceTextField.getText());
+
+                if (correct == 0) {
+                    currentOrder = new Order(Integer.parseInt(orderIdTextField.getText()),
+                        Integer.parseInt(customerIdTextField.getText()),
+                        Integer.parseInt(salesIdTextField.getText()),
+                        false, startDate, endDate,
+                        Integer.parseInt(priceTextField.getText()));
+                    System.out.println("Order has been created! (remember to save it) mwehehe"
+                        +"\n"+currentOrder);
+
+                    orderIdLabel.setText(currentOrder.getOrderID()+"");
+                }
+                else{
+                    System.out.println("Ordren blev IKKE oprettet!");
+                }
+            }
+            catch(Exception e){
+                System.out.println("Ordren blev IKKE oprettet!");
+            }
+
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Dato formatet skal skrives således: DD-MM-YYYY");
+        }
+
+        clearOrderTabTextFields();
+    }//GEN-LAST:event_createOrderButtonActionPerformed
+
     private void priceTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextFieldActionPerformed
+
     }//GEN-LAST:event_priceTextFieldActionPerformed
 
     private void endDateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endDateTextFieldActionPerformed
@@ -590,206 +753,6 @@ public class MainGUIFrame extends javax.swing.JFrame {
     private void customerIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIdTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customerIdTextFieldActionPerformed
-
-    private void createOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createOrderButtonActionPerformed
-            
-        Date startDate = null;
-        Date endDate = null;
-        if (startDateTextField.getText().length()  == 10  && 
-            startDateTextField.getText().charAt(2) == '-' &&
-            startDateTextField.getText().charAt(5) == '-' &&
-            endDateTextField.getText().length()  == 10  && 
-            endDateTextField.getText().charAt(2) == '-' &&
-            endDateTextField.getText().charAt(5) == '-')
-        {
-            startDate = control.formatStringToDate(startDateTextField.getText());
-            endDate = control.formatStringToDate(endDateTextField.getText()); 
-        
-            try{
-        
-        int correct = JOptionPane.showConfirmDialog(rootPane, "Er disse informationer korrekte? \n"
-                                    + "Ordre ID:                       " + orderIdTextField.getText()
-                                    + "\nKunde ID:                       " + customerIdTextField.getText()
-                                    + "\nSalgsmedarbejder ID: "+ salesIdTextField.getText()
-                                    + "\nStart dato:                      "+ startDateTextField.getText()
-                                    + "\nSlut dato:                        " + endDateTextField.getText()
-                                    + "\nPris:                                " + priceTextField.getText());
-        
-        if (correct == 0) {
-            currentOrder = new Order(Integer.parseInt(orderIdTextField.getText()),
-                                     Integer.parseInt(customerIdTextField.getText()),
-                                     Integer.parseInt(salesIdTextField.getText()),
-                                     false, startDate, endDate,
-                                     Integer.parseInt(priceTextField.getText()));
-            System.out.println("Order has been created! (remember to save it) mwehehe"
-                              +"\n"+currentOrder);
-        
-            orderIdLabel.setText(currentOrder.getOrderID()+"");
-        }
-        else{
-            System.out.println("Ordren blev IKKE oprettet!");
-        }
-        }
-        catch(Exception e){
-            System.out.println("Ordren blev IKKE oprettet!");
-        }
-        
-        }
-        else{
-            JOptionPane.showMessageDialog(rootPane, "Dato formatet skal skrives således: DD-MM-YYYY");
-        }
-        
-        
-        
-        clearOrderTabTextFields();
-    }//GEN-LAST:event_createOrderButtonActionPerformed
-
-    private void fullNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fullNameTextFieldActionPerformed
-
-    private void companyNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_companyNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_companyNameTextFieldActionPerformed
-
-    private void zipCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_zipCodeTextFieldActionPerformed
-
-    private void adressTextFIeldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adressTextFIeldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adressTextFIeldActionPerformed
-
-    private void phoneNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phoneNoTextFieldActionPerformed
-
-    private void createCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCustomerButtonActionPerformed
-
-         
-        try{
-            int correct = JOptionPane.showConfirmDialog(rootPane, "Er disse informationer korrekte? \n"
-                                    + "Kunde ID: " + customerIdTextField2.getText()
-                                    + "\nFulde Navn: "+ fullNameTextField.getText()
-                                    + "\nFirma Navn: "+ companyNameTextField.getText()
-                                    + "\nAdresse: " + adressTextFIeld.getText()
-                                    + "\nPost Nr: " + zipCodeTextField.getText()
-                                    + "\nTelefon Nr: " + phoneNoTextField.getText());
-        if (correct == 0) {
-            currentCustomer = new Customer(Integer.parseInt(customerIdTextField2.getText()),
-                                           fullNameTextField.getText(),
-                                           companyNameTextField.getText(),
-                                           adressTextFIeld.getText(),
-                                           Integer.parseInt(zipCodeTextField.getText()),
-                                           Integer.parseInt(phoneNoTextField.getText()));
-            System.out.println("Customer has been created! (remember to save it) mwehehe"
-                              +"\n"+currentCustomer);
-        }
-        }
-        catch(Exception e){
-            System.out.println("DET GIK GALT!!!!");
-        }
-        
-        clearCustomerTabTextFields();
-    }//GEN-LAST:event_createCustomerButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (currentOrder != null) {
-        control.insertOrder(currentOrder);
-        JOptionPane.showMessageDialog(rootPane, "Din ordre er gemt");
-        }
-        if(currentCustomer != null){
-        control.insertCustomer(currentCustomer);
-        JOptionPane.showMessageDialog(rootPane, "Din kunde er gemt");
-        }
-        
-        
-         
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void addDetailsToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDetailsToListButtonActionPerformed
-            //SYG hardcoded crime. skift snarligt
-            int resTypeID = 0;
-            if (dropDownRes.getSelectedItem().equalsIgnoreCase("Lille Stang")) 
-            {
-                resTypeID = 111;
-            }
-            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Medium Stang")) 
-            {
-                resTypeID = 222;
-            }
-            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Stor Stang")) 
-            {
-                resTypeID = 333;
-            }
-            else if (dropDownRes.getSelectedItem().equalsIgnoreCase("1337 Stang")) 
-            {
-                resTypeID = 444;
-            }
-            
-            if(control.checkRessourceAvailability(resTypeID, currentOrder.formatDateToString(currentOrder.getStartDate()), 
-               currentOrder.formatDateToString(currentOrder.getEndDate()), Integer.parseInt(resourceAmountTextField.getText()))){
-               
-                for (OrderDetail cod : control.createVerifiedOrderDetails(resTypeID, 
-                                                      Integer.parseInt(resourceAmountTextField.getText()), currentOrder)) {
-                    currentOrderDetails.add(cod);
-                }
-                
-                for (OrderDetail currentOrderDetail : currentOrderDetails) {
-                    resourceListTextArea.setText(resourceListTextArea.getText()+currentOrderDetail+"\n");
-                }
-            }
-    }//GEN-LAST:event_addDetailsToListButtonActionPerformed
-
-    private void findOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findOrderButtonActionPerformed
-        try {
-        orderIdLabel.setText(control.getOrder(Integer.parseInt(findOrderTextField.getText())).getOrderID()+"");
-        currentOrder = control.getOrder(Integer.parseInt(findOrderTextField.getText()));
-        } catch (Exception e) {
-        }
-
-    }//GEN-LAST:event_findOrderButtonActionPerformed
-
-    private void orderIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderIdTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orderIdTextFieldActionPerformed
-
-    private void customerListButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_customerListButtonActionPerformed
-    {//GEN-HEADEREND:event_customerListButtonActionPerformed
-        
-        listAllTextArea.setText("");
-        
-        ArrayList <Customer> Customers = control.getAllCustomers();
-        for (Customer Customer1 : Customers)
-        {
-            listAllTextArea.setText(listAllTextArea.getText()+Customer1+"\n");
-        }
-    }//GEN-LAST:event_customerListButtonActionPerformed
-
-    private void resourceListButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_resourceListButtonActionPerformed
-    {//GEN-HEADEREND:event_resourceListButtonActionPerformed
-       
-    }//GEN-LAST:event_resourceListButtonActionPerformed
-
-    private void orderListButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_orderListButtonActionPerformed
-    {//GEN-HEADEREND:event_orderListButtonActionPerformed
-       listAllTextArea.setText("");
-        
-        ArrayList <Order> Orders = control.getAllOrders();
-        for (Order Order1 : Orders)
-        {
-            listAllTextArea.setText(listAllTextArea.getText()+Order1+"\n");
-        }
-    }//GEN-LAST:event_orderListButtonActionPerformed
-
-    private void saveListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveListButtonActionPerformed
-        
-        if (currentOrderDetails!= null) {
-            
-        control.insertOrderDetails(currentOrderDetails);
-        JOptionPane.showMessageDialog(rootPane, "Ordre detaljer gemt!");
-        }
-    }//GEN-LAST:event_saveListButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -875,7 +838,6 @@ public class MainGUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -887,7 +849,6 @@ public class MainGUIFrame extends javax.swing.JFrame {
     private javax.swing.JTextField phoneNoTextField;
     private javax.swing.JTextField priceTextField;
     private javax.swing.JTextField resourceAmountTextField;
-    private javax.swing.JButton resourceListButton;
     private javax.swing.JTextArea resourceListTextArea;
     private javax.swing.JTextField salesIdTextField;
     private javax.swing.JButton saveListButton;
