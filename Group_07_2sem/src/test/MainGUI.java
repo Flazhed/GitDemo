@@ -592,7 +592,6 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonNewOrder2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewOrder2ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNewOrder2ActionPerformed
 
     private void jButtonLookUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLookUpActionPerformed
@@ -644,11 +643,11 @@ public class MainGUI extends javax.swing.JFrame {
         orderDetailTable = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "OrdreID", "RessourceID", "LagerID", "Antal"});
+                    "Ordre ID", "Ressource Type ID", "Lager ID", "Antal"});
 
         for (OrderDetail od : aod) { // for every drug get the 3 values
             orderDetails[0] = od.getOrderID();
-            orderDetails[1] = od.getResourceID();
+            orderDetails[1] = od.getResourceTypeID();
             orderDetails[2] = od.getStorageID();
             orderDetails[3] = od.getQty();
             orderDetailTable.addRow(orderDetails); //add to the row to the drug table
