@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
+ * 
  *
  * @author Uffe & Mads
  */
@@ -665,6 +666,7 @@ public class MainGUIFrame extends javax.swing.JFrame {
             resourceListTextArea.setText(resourceListTextArea.getText()+currentOrderDetail+"\n");
         }
         }
+        else JOptionPane.showMessageDialog(rootPane, "Der er ikke nok ressourcer i den valgte periode.");
     }//GEN-LAST:event_addDetailsToListButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

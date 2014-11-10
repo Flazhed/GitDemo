@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class CustomerMapper {
     //Single transaction.. To be added a list of transactions. 
     public boolean insertCustomer(Customer c, Connection con) {
-
+        
         int rowInserted = 0;
         String SQLString = "INSERT INTO Customers "
                 + "VALUES (?,?,?,?,null,?)";
