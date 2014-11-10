@@ -639,19 +639,19 @@ public class MainGUIFrame extends javax.swing.JFrame {
         int resTypeID = 0;
         if (dropDownRes.getSelectedItem().equalsIgnoreCase("Lille Stang"))
         {
-            resTypeID = 111;
+            resTypeID = 1;
         }
         else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Medium Stang"))
         {
-            resTypeID = 222;
+            resTypeID = 2;
         }
         else if (dropDownRes.getSelectedItem().equalsIgnoreCase("Stor Stang"))
         {
-            resTypeID = 333;
+            resTypeID = 3;
         }
         else if (dropDownRes.getSelectedItem().equalsIgnoreCase("1337 Stang"))
         {
-            resTypeID = 444;
+            resTypeID = 4;
         }
 
         if(control.checkRessourceAvailability(resTypeID, currentOrder.formatDateToString(currentOrder.getStartDate()),

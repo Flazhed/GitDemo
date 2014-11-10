@@ -14,13 +14,13 @@ public class OrderDetail {
     //Tilføj storage ID og fix toString
 
     private int orderID;
-    private int resourceID;
+    private int resourceTypeID;
     private int storageID;
     private int qty;
 
-    public OrderDetail(int orderID, int resourceID, int storageID, int qty) {
+    public OrderDetail(int orderID, int resourceTypeID, int storageID, int qty) {
         this.orderID = orderID;
-        this.resourceID = resourceID;
+        this.resourceTypeID = resourceTypeID;
         this.storageID = storageID;
         this.qty = qty;
     }
@@ -35,7 +35,7 @@ public class OrderDetail {
 
     @Override
     public String toString() {
-        return "RessourceID: " + resourceID +", Antal: " + qty;
+        return "RessourceID: " + resourceTypeID +", Antal: " + qty;
     }
 
     public int getOrderID() {
@@ -46,12 +46,12 @@ public class OrderDetail {
         this.orderID = orderID;
     }
 
-    public int getResourceID() {
-        return resourceID;
+    public int getResourceTypeID() {
+        return resourceTypeID;
     }
 
-    public void setResourceID(int resourceID) {
-        this.resourceID = resourceID;
+    public void setResourceTypeID(int resourceTypeID) {
+        this.resourceTypeID = resourceTypeID;
     }
 
     public int getQty() {
