@@ -8,6 +8,9 @@
 *.war
 *.ear
 
+#Exceptions
+/Group_07_2sem/dist/lib/*
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /Group_07_2sem/nbproject/private/
