@@ -16,6 +16,7 @@ public class OrderDetail {
     private int orderID;
     private int resourceTypeID;
     private int storageID;
+    private Ressource ressource;
     private int qty;
 
     public OrderDetail(int orderID, int resourceTypeID, int storageID, int qty) {
@@ -23,6 +24,7 @@ public class OrderDetail {
         this.resourceTypeID = resourceTypeID;
         this.storageID = storageID;
         this.qty = qty;
+        
     }
 
     public int getStorageID() {
@@ -61,5 +63,15 @@ public class OrderDetail {
     public void setQty(int qty) {
         this.qty = qty;
     }
+
+    public Ressource getRessource() {
+        return ressource;
+    }
+
+    public void setRessource(Ressource ressource) {
+        this.ressource = ressource;
+    }
+    
+    
 
 }

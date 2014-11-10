@@ -7,6 +7,7 @@ package dataSource;
 
 import domain.Order;
 import domain.OrderDetail;
+import domain.Ressource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -98,9 +99,9 @@ public class OrderMapper {
                 + "FROM Orders "
                 + "WHERE OrderID = ?";
 
-        String SQLString2 = "SELECT od.RessourceTypeID, od.StorageID, od.qty "
-                + "FROM OrderDetails od "
-                + "WHERE od.OrderID = ?";
+        String SQLString2 = "SELECT DISTINCT od.RessourceTypeID, od.StorageID, od.qty, rs.qty, rst.typeName "
+                + "FROM Ressources rs, OrderDetails od, RessourceTypes rst "
+                + "WHERE od.OrderID = ? AND od.RessourceTypeID = rst.RessourceTypeID and Od.Storageid = rs.storageID and od.Ressourcetypeid= Rs.Ressourcetypeid;";
 
 // String for orderDetails, will be inserted here.
         PreparedStatement statement = null;
@@ -121,7 +122,11 @@ public class OrderMapper {
             rs = statement.executeQuery();
 
             while (rs.next()) {
-                o.addDetail(new OrderDetail(orderID, rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+                
+                Ressource res = new Ressource(rs.getInt(1), rs.getString(5), rs.getInt(2), rs.getInt(4));
+                OrderDetail od = new OrderDetail(orderID, rs.getInt(1), rs.getInt(2), rs.getInt(3)); 
+                od.setRessource(res);
+                o.addDetail(od);
             }
 
         } catch (SQLException e) {

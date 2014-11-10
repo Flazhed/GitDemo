@@ -11,30 +11,28 @@ package domain;
  */
 public class Ressource {
     
-    private int ressourceID;
+    
     private int ressourceTypeID;
-    private String ressourceType;
+    private String ressourceTypeName;
     private int storageID;
     private int qty;
 
-    public Ressource(int ressourceID, int ressourceTypeID, String ressourceType, int storageID, int qty) {
-        this.ressourceID = ressourceID;
+    public Ressource(int ressourceTypeID, String ressourceTypeName, int storageID, int qty) {
+        
         this.ressourceTypeID = ressourceTypeID;
-        this.ressourceType = ressourceType;
+        this.ressourceTypeName = ressourceTypeName;
         this.storageID = storageID;
         this.qty = qty;
     }
 
-    public int getRessourceID() {
-        return ressourceID;
-    }
+
 
     public int getRessourceTypeID() {
         return ressourceTypeID;
     }
 
-    public String getRessourceType() {
-        return ressourceType;
+    public String getRessourceTypeName() {
+        return ressourceTypeName;
     }
 
     public int getStorageID() {

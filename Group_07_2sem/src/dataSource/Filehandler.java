@@ -52,8 +52,8 @@ public class Filehandler {
             
             for (OrderDetail od : order.getOrderDetails()) {
                 
-                    writer.write(od.getQty() + "\t" + od.getResourceID() + "\t" +
-                            od.getRessource.getTypename + "\t" + od.getStorageID());
+                    writer.write(od.getQty() + "\t" + od.getResourceTypeID() + "\t" +
+                            od.getRessource().getRessourceTypeName() + "\t" + od.getStorageID());
             }
             
         } catch (Exception e) {
