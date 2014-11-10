@@ -10,6 +10,7 @@ import domain.Customer;
 import domain.Order;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -252,6 +253,8 @@ public class JFrameCreateOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxConfirmedActionPerformed
 
     private void jButtonCreateOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreateOrderActionPerformed
+        try {
+            
         Order o = new Order(Integer.parseInt(jTextFieldCreateOrder.getText()),
                 Integer.parseInt(jComboBoxCustomerID.getSelectedItem().toString()),
                 Integer.parseInt(jComboBoxEmployeeId.getSelectedItem().toString()),
@@ -260,9 +263,12 @@ public class JFrameCreateOrder extends javax.swing.JFrame {
                 con.formatStringToDate(dateChooserComboDateTo.getText()),
                 Float.parseFloat(jTextFieldPrice.getText()));
         con.insertOrder(o);
-        System.out.println("saved!");
-
+        JOptionPane.showMessageDialog(rootPane, "Ordren er gemt!");
+        
         super.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Ordren blev ikke gemt!");
+        }
     }//GEN-LAST:event_jButtonCreateOrderActionPerformed
 
     /**

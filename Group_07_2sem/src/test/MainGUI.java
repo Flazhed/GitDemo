@@ -6,13 +6,13 @@
 package test;
 
 import domain.Controller;
+import domain.Customer;
  
 import domain.Order;
 import domain.OrderDetail;
 import java.util.ArrayList;
-import java.util.Arrays;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import oracle.net.aso.o;
 
 /**
  *
@@ -22,6 +22,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     Controller control = Controller.getInstance();
     DefaultTableModel orderTable;
+    DefaultTableModel customerTable;
 
     /**
      * Creates new form NewJFrame2
@@ -29,13 +30,15 @@ public class MainGUI extends javax.swing.JFrame {
     public MainGUI() {
         initComponents();
         jTableModelOrderSetup();
-
         jTableOrder.setModel(jTableModelAllOrders());
         jTableOrder.setEnabled(false);
-
         jTableOrderDetails.setModel(jTableModelClearOrderDetails());
+        
+        jTableModelCustomerSetup();
+        jTableCustomer.setModel(jTableModelAllCustomers());
+        jTableCustomer.setEnabled(false);
 
-        jComboBoxSingleOrder.setModel(new DefaultComboBoxModel(findOrderComboBox()));
+
 
     }
 
@@ -55,9 +58,9 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabelOpretOrder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBoxSingleOrder = new javax.swing.JComboBox();
         jButtonNewOrder = new javax.swing.JButton();
         jButtonLookUp = new javax.swing.JButton();
+        jTextFieldLookUpOrder = new javax.swing.JTextField();
         jButtonSearch = new javax.swing.JButton();
         dateChooserComboSearchTo = new datechooser.beans.DateChooserCombo();
         jLabel4 = new javax.swing.JLabel();
@@ -71,25 +74,33 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableCustomer = new javax.swing.JTable();
         dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
         jPanel6 = new javax.swing.JPanel();
         jLabelOpretOrder1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        jTextFieldLookUpCustomer = new javax.swing.JTextField();
+        jButtonSearchCustomer = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButtonNewOrder1 = new javax.swing.JButton();
+        dateChooserCombo4 = new datechooser.beans.DateChooserCombo();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        jTextFieldLookUpEmployee = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
+        jTableEmployee = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         jLabelOpretOrder2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        jTextField1 = new javax.swing.JTextField();
+        jButtonSearchEmployee = new javax.swing.JButton();
         jButtonNewOrder2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
+        dateChooserCombo5 = new datechooser.beans.DateChooserCombo();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,20 +109,18 @@ public class MainGUI extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelOpretOrder.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelOpretOrder.setText("Order");
+        jLabelOpretOrder.setText("Ordre");
 
-        jLabel1.setText("OrderID");
+        jLabel1.setText("Ordre ID");
 
-        jComboBoxSingleOrder.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButtonNewOrder.setText("New order");
+        jButtonNewOrder.setText("Ny Ordre");
         jButtonNewOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNewOrderActionPerformed(evt);
             }
         });
 
-        jButtonLookUp.setText("Lookup");
+        jButtonLookUp.setText("Find");
         jButtonLookUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLookUpActionPerformed(evt);
@@ -129,12 +138,12 @@ public class MainGUI extends javax.swing.JFrame {
                         .addComponent(jLabelOpretOrder)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxSingleOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldLookUpOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonLookUp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 855, Short.MAX_VALUE)
                         .addComponent(jButtonNewOrder)))
                 .addContainerGap())
         );
@@ -145,14 +154,14 @@ public class MainGUI extends javax.swing.JFrame {
                 .addComponent(jLabelOpretOrder)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxSingleOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jButtonLookUp)
-                    .addComponent(jButtonNewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonNewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldLookUpOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jButtonSearch.setText("Search");
+        jButtonSearch.setText("Søg");
         jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSearchActionPerformed(evt);
@@ -161,9 +170,9 @@ public class MainGUI extends javax.swing.JFrame {
 
         dateChooserComboSearchTo.setFormat(2);
 
-        jLabel4.setText("Date from:");
+        jLabel4.setText("Dato fra:");
 
-        jLabel5.setText("Date to:");
+        jLabel5.setText("Dato til:");
 
         jTableOrderDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,7 +203,7 @@ public class MainGUI extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jTableOrder);
         jTableOrder.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        jLabel6.setText("Orders:");
+        jLabel6.setText("Ordre:");
 
         jLabel7.setText("OrderDetails:");
 
@@ -222,7 +231,7 @@ public class MainGUI extends javax.swing.JFrame {
                                         .addComponent(jButtonSearch))))
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
-                        .addGap(0, 741, Short.MAX_VALUE)))
+                        .addGap(0, 755, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jScrollPane5)
         );
@@ -239,25 +248,24 @@ public class MainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(dateChooserComboSearchFrom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                        .addComponent(dateChooserComboSearchTo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButtonSearch))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dateChooserComboSearchFrom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(dateChooserComboSearchTo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(175, 175, 175))
         );
 
-        jTabbedPane1.addTab("Orders", jPanel1);
+        jTabbedPane1.addTab("Ordre", jPanel1);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -268,16 +276,21 @@ public class MainGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTableCustomer);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelOpretOrder1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelOpretOrder1.setText("Customers");
+        jLabelOpretOrder1.setText("Kunder");
 
-        jLabel2.setText("CustomerID");
+        jLabel2.setText("Kunde ID");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButtonSearchCustomer.setText("Find");
+        jButtonSearchCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchCustomerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -290,46 +303,60 @@ public class MainGUI extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(796, Short.MAX_VALUE))
+                        .addComponent(jTextFieldLookUpCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonSearchCustomer)))
+                .addContainerGap(733, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabelOpretOrder1)
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldLookUpCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchCustomer))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jButton2.setText("jButton1");
+        jButton2.setText("Søg");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButtonNewOrder1.setText("New Customer");
+        jButtonNewOrder1.setText("Ny Kunde");
         jButtonNewOrder1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonNewOrder1ActionPerformed(evt);
             }
         });
 
+        jLabel8.setText("Dato fra:");
+
+        jLabel9.setText("Dato til:");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(485, Short.MAX_VALUE)
-                .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(jButton2)
-                .addGap(215, 215, 215))
             .addComponent(jScrollPane2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateChooserCombo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton2)))
+                .addGap(237, 237, 237))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,14 +371,19 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateChooserCombo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(7, 7, 7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dateChooserCombo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateChooserCombo4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
                 .addComponent(jButtonNewOrder1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -362,9 +394,9 @@ public class MainGUI extends javax.swing.JFrame {
             .addGap(0, 1172, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 95, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 96, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,9 +408,9 @@ public class MainGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Customers", jPanel2);
+        jTabbedPane1.addTab("Kunder", jPanel2);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -389,23 +421,16 @@ public class MainGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(jTableEmployee);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelOpretOrder2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelOpretOrder2.setText("Employee");
+        jLabelOpretOrder2.setText("Medarbejdere");
 
-        jLabel3.setText("EmployeeID");
+        jLabel3.setText("Medarbejder ID:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButtonNewOrder2.setText("New Employee");
-        jButtonNewOrder2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNewOrder2ActionPerformed(evt);
-            }
-        });
+        jButtonSearchEmployee.setText("Find");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -417,60 +442,87 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelOpretOrder2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonNewOrder2)
-                .addContainerGap())
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSearchEmployee)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabelOpretOrder2)
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonNewOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchEmployee))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jButton3.setText("jButton1");
+        jButtonNewOrder2.setText("Ny Medarbejder");
+        jButtonNewOrder2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewOrder2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Søg");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        jLabel10.setText("Dato fra:");
+
+        jLabel11.setText("Dato til:");
+
+        javax.swing.GroupLayout jTextFieldLookUpEmployeeLayout = new javax.swing.GroupLayout(jTextFieldLookUpEmployee);
+        jTextFieldLookUpEmployee.setLayout(jTextFieldLookUpEmployeeLayout);
+        jTextFieldLookUpEmployeeLayout.setHorizontalGroup(
+            jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE)
+            .addGroup(jTextFieldLookUpEmployeeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jTextFieldLookUpEmployeeLayout.createSequentialGroup()
+                        .addComponent(jButtonNewOrder2)
+                        .addGap(213, 213, 213)
+                        .addGroup(jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateChooserCombo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(41, 41, 41)
+                        .addGroup(jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addGroup(jTextFieldLookUpEmployeeLayout.createSequentialGroup()
+                                .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(jButton3)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(485, Short.MAX_VALUE)
-                .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(jButton3)
-                .addGap(215, 215, 215))
-            .addComponent(jScrollPane3)
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        jTextFieldLookUpEmployeeLayout.setVerticalGroup(
+            jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jTextFieldLookUpEmployeeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateChooserCombo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(48, 48, 48)
+                .addGap(28, 28, 28)
+                .addGroup(jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGroup(jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTextFieldLookUpEmployeeLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jButtonNewOrder2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jTextFieldLookUpEmployeeLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jTextFieldLookUpEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateChooserCombo5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -482,9 +534,9 @@ public class MainGUI extends javax.swing.JFrame {
             .addGap(0, 1172, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 95, Short.MAX_VALUE)
+                    .addComponent(jTextFieldLookUpEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 96, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,11 +544,11 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldLookUpEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Employee", jPanel3);
+        jTabbedPane1.addTab("Medarbejdere", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -506,8 +558,13 @@ public class MainGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 904, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 904, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -515,56 +572,48 @@ public class MainGUI extends javax.swing.JFrame {
     private void jButtonNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewOrderActionPerformed
         JFrameCreateOrder njf = new JFrameCreateOrder();
         njf.setVisible(true);
+        
     }//GEN-LAST:event_jButtonNewOrderActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         jTableModelOrderSetup();
         jTableOrder.setModel(jTableModelAllOrders());
         jTableOrderDetails.setModel(jTableModelClearOrderDetails());
-//        jComboBoxSingleOrder.setModel(new DefaultComboBoxModel(findOrderComboBox()));
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonNewOrder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewOrder1ActionPerformed
-        // TODO add your handling code here:
+        JFrameCreateCustomer njf = new JFrameCreateCustomer();
+        njf.setVisible(true);
     }//GEN-LAST:event_jButtonNewOrder1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        jTableModelCustomerSetup();
+        jTableCustomer.setModel(jTableModelAllCustomers());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonNewOrder2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewOrder2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNewOrder2ActionPerformed
 
+    private void jButtonLookUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLookUpActionPerformed
+        jTableModelOrderSetup();
+        jTableOrder.setModel(jTableModelSingleOrder(Integer.parseInt(jTextFieldLookUpOrder.getText())));
+        jTableOrderDetails.setModel(jTableModelOrderDetails(Integer.parseInt(jTextFieldLookUpOrder.getText())));
+
+    }//GEN-LAST:event_jButtonLookUpActionPerformed
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButtonLookUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLookUpActionPerformed
-        jTableModelOrderSetup();
-        jTableOrder.setModel(jTableModelSingleOrder(Integer.parseInt(jComboBoxSingleOrder.getSelectedItem().toString())));
-        jTableOrderDetails.setModel(jTableModelOrderDetails(Integer.parseInt(jComboBoxSingleOrder.getSelectedItem().toString())));
+    private void jButtonSearchCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchCustomerActionPerformed
+         jTableModelCustomerSetup();
+        jTableCustomer.setModel(jTableModelSingleCustomer(Integer.parseInt(jTextFieldLookUpCustomer.getText())));
 
-    }//GEN-LAST:event_jButtonLookUpActionPerformed
+    }//GEN-LAST:event_jButtonSearchCustomerActionPerformed
 
-    private String[] findOrderComboBox() {
-
-        ArrayList<Order> temp = control.getAllOrders();
-
-        String[] orderArray = new String[temp.size()];
-
-        for (int i = 0; i < temp.size(); i++) {
-            Order order = temp.get(i);
-
-            orderArray[i] = order.getOrderID() + "";
-
-        }
-
-        Arrays.sort(orderArray);
-
-        return orderArray;
-    }
-
+    //----------------------------------------------------------------
+    //  jTableOrder metoder, begynder her:
     private DefaultTableModel jTableModelSingleOrder(int OrderID) {
 
         Object[] orderTemp = new Object[7];
@@ -574,14 +623,14 @@ public class MainGUI extends javax.swing.JFrame {
         orderTemp[0] = o.getOrderID();
         orderTemp[1] = o.getCustomerID();
         orderTemp[2] = o.getSalesID();
-        orderTemp[3] = o.isComfirmed();
+        if (o.isComfirmed()) { orderTemp[3] = "Betalt";   }
+        else                 { orderTemp[3] = "Ikke Betalt"; }
         orderTemp[4] = o.getStartDate();
         orderTemp[5] = o.getEndDate();
         orderTemp[6] = o.getPrice();
         orderTable.addRow(orderTemp);
 
         return orderTable;
-
     }
 
     private DefaultTableModel jTableModelOrderDetails(int OrderID) {
@@ -595,7 +644,7 @@ public class MainGUI extends javax.swing.JFrame {
         orderDetailTable = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "OrderID", "ResourceID", "StorageID", "QTY"});
+                    "OrdreID", "RessourceID", "LagerID", "Antal"});
 
         for (OrderDetail od : aod) { // for every drug get the 3 values
             orderDetails[0] = od.getOrderID();
@@ -605,9 +654,7 @@ public class MainGUI extends javax.swing.JFrame {
             orderDetailTable.addRow(orderDetails); //add to the row to the drug table
 
         }
-
         return orderDetailTable;
-
     }
 
     private DefaultTableModel jTableModelClearOrderDetails() {
@@ -617,8 +664,7 @@ public class MainGUI extends javax.swing.JFrame {
         cleanOrderDetailTableModel = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "OrderID", "ResourceID", "StorageID", "QTY"});
-
+                    "OrdreID", "RessourceID", "LagerID", "Antal"});
         return cleanOrderDetailTableModel;
     }
 
@@ -627,32 +673,82 @@ public class MainGUI extends javax.swing.JFrame {
         orderTable = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "OrderID", "CustomerID", "SalesID", "Confirmed", "Start Date", "End Date", "Price"});
-
+                    "OrdreID", "KundeID", "SalgsmedarbejderID", "Depositum", "Start Dato", "Slut Dato", "Pris"});
     }
 
     private DefaultTableModel jTableModelAllOrders() {
 
         Object[] orderTemp = new Object[7];
-
         ArrayList<Order> temp = control.getAllOrders();
 
         for (Order o : temp) {
             orderTemp[0] = o.getOrderID();
             orderTemp[1] = o.getCustomerID();
             orderTemp[2] = o.getSalesID();
-            orderTemp[3] = o.isComfirmed();
+        if (o.isComfirmed()) { orderTemp[3] = "Betalt";   }
+        else                 { orderTemp[3] = "Ikke Betalt"; }
             orderTemp[4] = o.getStartDate();
             orderTemp[5] = o.getEndDate();
             orderTemp[6] = o.getPrice();
             orderTable.addRow(orderTemp);
-
         }
 
         return orderTable;
+    }
+    
+    //  jTableOrder metoder, slutter her.
+    //----------------------------------------------------------------
+    
+    
+    //----------------------------------------------------------------
+    //  jTableCustomer metoder, begynder her:
+    private DefaultTableModel jTableModelSingleCustomer(int customerID) {
 
+        Object[] customerTemp = new Object[6];
+
+        Customer c = control.getCustomer(customerID);
+
+        customerTemp[0] = c.getCustomerID();
+        customerTemp[1] = c.getFullName();
+        customerTemp[2] = c.getCompanyName();
+        customerTemp[3] = c.getAddress();
+        customerTemp[4] = c.getZipCode();
+        customerTemp[5] = c.getPhoneNumber();
+        customerTable.addRow(customerTemp);
+
+        return customerTable;
     }
 
+    private void jTableModelCustomerSetup() {
+
+        customerTable = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "KundeID", "Fulde Navn", "Firma Navn", "Adresse", "Post Nr.", "Telefon Nr."});
+    }
+
+    private DefaultTableModel jTableModelAllCustomers() {
+
+        Object[] customerTemp = new Object[6];
+        ArrayList<Customer> temp = control.getAllCustomers();
+
+        for (Customer c : temp) {
+        customerTemp[0] = c.getCustomerID();
+        customerTemp[1] = c.getFullName();
+        customerTemp[2] = c.getCompanyName();
+        customerTemp[3] = c.getAddress();
+        customerTemp[4] = c.getZipCode();
+        customerTemp[5] = c.getPhoneNumber();
+        customerTable.addRow(customerTemp);
+        }
+
+        return customerTable;
+    }
+    
+    //  jTableCustomer metoder, slutter her.
+    //----------------------------------------------------------------
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -693,6 +789,8 @@ public class MainGUI extends javax.swing.JFrame {
     private datechooser.beans.DateChooserCombo dateChooserCombo1;
     private datechooser.beans.DateChooserCombo dateChooserCombo2;
     private datechooser.beans.DateChooserCombo dateChooserCombo3;
+    private datechooser.beans.DateChooserCombo dateChooserCombo4;
+    private datechooser.beans.DateChooserCombo dateChooserCombo5;
     private datechooser.beans.DateChooserCombo dateChooserComboSearchFrom;
     private datechooser.beans.DateChooserCombo dateChooserComboSearchTo;
     private javax.swing.JButton jButton2;
@@ -702,16 +800,19 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNewOrder1;
     private javax.swing.JButton jButtonNewOrder2;
     private javax.swing.JButton jButtonSearch;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBoxSingleOrder;
+    private javax.swing.JButton jButtonSearchCustomer;
+    private javax.swing.JButton jButtonSearchEmployee;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelOpretOrder;
     private javax.swing.JLabel jLabelOpretOrder1;
     private javax.swing.JLabel jLabelOpretOrder2;
@@ -721,16 +822,19 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTableCustomer;
+    private javax.swing.JTable jTableEmployee;
     private javax.swing.JTable jTableOrder;
     private javax.swing.JTable jTableOrderDetails;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldLookUpCustomer;
+    private javax.swing.JPanel jTextFieldLookUpEmployee;
+    private javax.swing.JTextField jTextFieldLookUpOrder;
     // End of variables declaration//GEN-END:variables
 }

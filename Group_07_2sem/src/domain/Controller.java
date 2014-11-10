@@ -71,11 +71,16 @@ public class Controller {
         return dbf.insertOrderDetails(odl);
 
     }
-
+    
+    public Customer createNewCustomer(int customerID, String name, String companyName,
+                                      String adress, int zip, int phoneNumber){
+        return new Customer(customerID, name, companyName, adress, zip, phoneNumber);
+    }
+    
+    
     public Order createNewOrder(int orderID, int cusomerID, int salesID, boolean confirmed,
             Date startDate, Date endDate, float price) {
-        Order o = new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);
-        return o;
+        return new Order(orderID, cusomerID, salesID, confirmed, startDate, endDate, price);
     }
 
     public OrderDetail createNewOrderDetail(int orderID, int ressourceID, int storageID, int qty) {
