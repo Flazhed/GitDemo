@@ -35,7 +35,7 @@ public class DatabaseQueries {
                 + "      (startDate<=? AND endDate>=? AND startDate<=? AND endDate>=? )"
                 + "      ) "
                 + "      AND confirmed=1)"
-                + "      AND RessourceID IN (SELECT RessourceID FROM ressources WHERE ressourceTypeID=?)";
+                + "      AND RessourceTypeID = ?";
         //SELECTER qty for en given RESOURCETYPEID i en GIVEN tidsperiode, to datoer, hvor order = confirmed 
         PreparedStatement statement = null;
 
@@ -57,7 +57,7 @@ public class DatabaseQueries {
                 System.out.println("Qty for restype(" + resType + ") is " + rs.getInt(1) + " between " + startDate + " and " + endDate);
             }
         } catch (Exception e) {
-            System.out.println("Fail1 " + e.toString());
+            System.out.println("Fail1 Checkavail " + e.toString());
         }
 
         //Nu findes det totale ledige amount. ved at finde alle oprettede ressources, med det ønskede resTypeID
@@ -105,7 +105,7 @@ public class DatabaseQueries {
         int ressourceID2 = 0;
         int storageID1 = 1;
         int storageID2 = 2;
-        String SQLString1 = "SELECT sum(qty), storageID, ressourceID FROM Orderdetails WHERE OrderID IN ("
+        String SQLString1 = "SELECT sum(qty), storageID, ressourceTypeID FROM Orderdetails WHERE OrderID IN ("
                 + "      SELECT orderID FROM Orders WHERE ("
                 + "      (startDate>=? AND endDate<=?) or"
                 + "      (endDate>=? AND endDate>=?) OR"
@@ -113,7 +113,7 @@ public class DatabaseQueries {
                 + "      (startDate<=? AND endDate>=? AND startDate<=? AND endDate>=? )"
                 + "      ) "
                 + "      AND confirmed=1)"
-                + "      AND RessourceID IN (SELECT RessourceID FROM ressources WHERE ressourceTypeID=?) GROUP BY StorageID, ressourceID ORDER BY STORAGEID ASC";
+                + "      AND RessourceTypeID =? GROUP BY StorageID, ressourceTypeID ORDER BY STORAGEID ASC";
         //SELECTER qty for en given RESOURCETYPEID i en GIVEN tidsperiode, to datoer, hvor order = confirmed 
         PreparedStatement statement = null;
 
@@ -147,7 +147,7 @@ public class DatabaseQueries {
         System.out.println("Storage2qtyinuse: " + storage2QtyInUse + " resID2: " + ressourceID2);
 
         //Antallet af ressourcer i brug for hvert lager er fundet. Nu skal der findes max antal ressourcer.
-        SQLString1 = "SELECT QTY, StorageID, RessourceID FROM Ressources Where ressourceTypeID=? GROUP BY StorageID, ressourceID, QTY ORDER BY STORAGEID ASC";
+        SQLString1 = "SELECT QTY, StorageID, RessourceTypeID FROM Ressources Where ressourceTypeID=? GROUP BY StorageID, ressourceTypeID, QTY ORDER BY STORAGEID ASC";
         try {
             statement = DBConnector.getInstance().getConnection().prepareStatement(SQLString1);
             statement.setInt(1, resTypeID);

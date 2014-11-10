@@ -61,7 +61,7 @@ public class OrderMapper {
                 + "VALUES (?,?,?,?)";
 
         PreparedStatement statement = null;
-        System.out.println(odl.get(0).getOrderID() + " " + odl.get(0).getResourceID() + " " + odl.get(0).getStorageID() + " " + odl.get(0).getQty());
+        System.out.println(odl.get(0).getOrderID() + " " + odl.get(0).getResourceTypeID() + " " + odl.get(0).getStorageID() + " " + odl.get(0).getQty());
         try {
             statement = con.prepareStatement(SQLString);
 
@@ -70,7 +70,7 @@ public class OrderMapper {
                 OrderDetail od = odl.get(i);
 
                 statement.setInt(1, od.getOrderID());
-                statement.setInt(2, od.getResourceID());
+                statement.setInt(2, od.getResourceTypeID());
                 statement.setInt(3, od.getStorageID());
                 statement.setInt(4, od.getQty());
                 rowInserted += statement.executeUpdate();
@@ -98,7 +98,7 @@ public class OrderMapper {
                 + "FROM Orders "
                 + "WHERE OrderID = ?";
 
-        String SQLString2 = "SELECT od.RessourceID, od.StorageID, od.qty "
+        String SQLString2 = "SELECT od.RessourceTypeID, od.StorageID, od.qty "
                 + "FROM OrderDetails od "
                 + "WHERE od.OrderID = ?";
 
