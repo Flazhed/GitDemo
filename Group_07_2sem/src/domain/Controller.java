@@ -128,6 +128,28 @@ public class Controller {
         return dbf.getAllOrders();
     }
     
+    
+    
+     /**
+     * Returns all types of ressources with the total amount on all storages combined
+     * @param restypeID 0 = list of ALL ressources else the chosen resTypeID
+     */
+    public ArrayList<Ressource> getRessourceList(int resTypeID){
+        return dbf.getRessourceList(resTypeID);
+    }
+    
+     /**
+     * Returns all ressources from all storages.
+     * @param restypeID 0 = list of ALL ressources else the chosen resTypeID
+     */
+     public ArrayList<Ressource> getAllRessources(int resTypeID){
+         return dbf.getAllRessources(resTypeID);
+     }
+    
+     public boolean insertRessource(Ressource r){
+         return dbf.insertRessource(r);
+     }
+     
     public void PrintOrder (Order o){
         Filehandler fh = new Filehandler();
         fh.writeToFile(o);

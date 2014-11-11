@@ -8,6 +8,7 @@ package dataSource;
 import domain.Customer;
 import domain.Order;
 import domain.OrderDetail;
+import domain.Ressource;
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class DBFacade {
     private Connection con;
     private OrderMapper om;
     private CustomerMapper cm;
+    private RessourceMapper rm;
     private DatabaseQueries dbq;
     //== Singleton start
     private static DBFacade instance;
@@ -29,6 +31,7 @@ public class DBFacade {
         om = new OrderMapper();
         cm = new CustomerMapper();
         dbq = new DatabaseQueries();
+        rm = new RessourceMapper();
         //MAPPERS END
         con = DBConnector.getInstance().getConnection();
 
@@ -76,4 +79,16 @@ public class DBFacade {
     public ArrayList<OrderDetail> createVerifiedOrderDetails(int resTypeID, int requestedQty, Order o){
         return dbq.createVerifiedOrderDetails(resTypeID, requestedQty, o);
     }
+    
+    public ArrayList<Ressource> getRessourceList(int resTypeID){
+        return rm.getRessourceList(resTypeID);
+    }
+    
+     public ArrayList<Ressource> getAllRessources(int resTypeID){
+         return rm.getAllRessources(resTypeID);
+     }
+     
+     public boolean insertRessource(Ressource r){
+         return rm.insertRessource(r);
+     }
 }

@@ -25,6 +25,11 @@ public class Ressource {
         this.qty = qty;
     }
 
+    @Override
+    public String toString() {
+        return "Ressource{" + "ressourceTypeID=" + ressourceTypeID + ", ressourceTypeName=" + ressourceTypeName + ", storageID=" + storageID + ", qty=" + qty + '}';
+    }
+
 
 
     public int getRessourceTypeID() {

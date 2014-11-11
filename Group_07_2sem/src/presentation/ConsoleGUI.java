@@ -5,11 +5,10 @@
  */
 package presentation;
 
-import dataSource.CustomerMapper;
-import dataSource.DBConnector;
 import domain.*;
 import java.sql.Date;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 /**
  *
@@ -51,6 +50,21 @@ public class ConsoleGUI {
 //        odl.add(con.createNewOrderDetail(1111, 3, 1, 5));
 //        con.insertOrderDetails(odl);
 //        System.out.println(con.getOrder(1111));
+        
+        
+        ArrayList<Ressource> rsList = con.getRessourceList(0);
+        
+        for (Ressource rs : rsList) {
+            System.out.println(rs.toString());
+        }
+        
+        Ressource r = new Ressource(4, "", 1, 50);
+        
+        con.insertRessource(r);
+        
+    
     }
+    
+          
 
 }
