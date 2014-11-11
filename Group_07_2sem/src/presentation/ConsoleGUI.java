@@ -52,7 +52,7 @@ public class ConsoleGUI {
 //        System.out.println(con.getOrder(1111));
         
         
-        ArrayList<Ressource> rsList = con.getRessourceList();
+        ArrayList<Ressource> rsList = con.getRessourceList(0);
         
         for (Ressource rs : rsList) {
             System.out.println(rs.toString());

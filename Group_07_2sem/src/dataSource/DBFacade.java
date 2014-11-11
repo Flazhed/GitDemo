@@ -80,7 +80,11 @@ public class DBFacade {
         return dbq.createVerifiedOrderDetails(resTypeID, requestedQty, o);
     }
     
-    public ArrayList<Ressource> getRessourceList(){
-        return rm.getRessourceList();
+    public ArrayList<Ressource> getRessourceList(int resTypeID){
+        return rm.getRessourceList(resTypeID);
     }
+    
+     public ArrayList<Ressource> getAllRessources(int resTypeID){
+         return rm.getAllRessources(resTypeID);
+     }
 }
