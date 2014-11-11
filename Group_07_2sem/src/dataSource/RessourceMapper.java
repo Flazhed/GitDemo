@@ -8,6 +8,7 @@ package dataSource;
 import domain.Ressource;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -93,4 +94,31 @@ public class RessourceMapper {
         return ressourceList;
     }
     
+    
+    public boolean insertRessource(Ressource r){
+        
+        int rowsInserted = 0;
+        String SQLString ="INSERT INTO ressources "
+                + "VALUES(?, ?, ?)";
+        PreparedStatement statement = null;
+        
+        try {
+            statement = DBConnector.getInstance().getConnection().prepareStatement(SQLString);
+            statement.setInt(1, r.getRessourceTypeID());
+            statement.setInt(2, r.getStorageID());
+            statement.setInt(3, r.getQty());
+            rowsInserted = statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Fail in insertRessource1 " + e.toString());
+        }
+        finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("ERROR in insertRessource2 - insertRessource Finally " + e);
+            }
+        }
+        
+        return rowsInserted == 1;
+    }
 }

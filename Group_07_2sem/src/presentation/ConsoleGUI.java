@@ -58,6 +58,10 @@ public class ConsoleGUI {
             System.out.println(rs.toString());
         }
         
+        Ressource r = new Ressource(4, "", 1, 50);
+        
+        con.insertRessource(r);
+        
     
     }
     

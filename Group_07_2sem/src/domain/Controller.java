@@ -141,6 +141,10 @@ public class Controller {
          return dbf.getAllRessources(resTypeID);
      }
     
+     public boolean insertRessource(Ressource r){
+         return dbf.insertRessource(r);
+     }
+     
     public void PrintOrder (Order o){
         Filehandler fh = new Filehandler();
         fh.writeToFile(o);

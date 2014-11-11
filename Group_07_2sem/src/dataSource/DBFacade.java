@@ -87,4 +87,8 @@ public class DBFacade {
      public ArrayList<Ressource> getAllRessources(int resTypeID){
          return rm.getAllRessources(resTypeID);
      }
+     
+     public boolean insertRessource(Ressource r){
+         return rm.insertRessource(r);
+     }
 }
