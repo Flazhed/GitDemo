@@ -123,6 +123,10 @@ public class Controller {
         return dbf.getAllOrders();
     }
     
+    public ArrayList<Ressource> getRessourceList(){
+        return dbf.getRessourceList();
+    }
+    
     public void PrintOrder (Order o){
         Filehandler fh = new Filehandler();
         fh.writeToFile(o);
