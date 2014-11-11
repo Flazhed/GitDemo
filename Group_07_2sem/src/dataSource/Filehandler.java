@@ -31,7 +31,7 @@ public class Filehandler {
             
             //Laver midlertidig fil
             String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-            File logFile = new File(timeLog);
+            File logFile = new File(timeLog + ".txt");
 
         
             // This will output the full path where the file will be written to...
@@ -42,8 +42,9 @@ public class Filehandler {
             
             //Sidehoved til dokumentet
             writer.write("OrderID:" + order.getOrderID());
+            writer.newLine();
             writer.write("Antal \t RessourceID \t Navn \t LagerID");
-            
+            writer.newLine();
             //ResID, restypeID, String restype, StorageID, maxqty
             
             // metode (List resID, list StorID) return list res objects
@@ -55,6 +56,7 @@ public class Filehandler {
                             od.getRessource().getRessourceTypeName() + "\t" + od.getStorageID());
                     writer.write(od.getQty() + "\t" + od.getResourceTypeID() + "\t" +
                             od.getRessource().getRessourceTypeName() + "\t" + od.getStorageID());
+                    writer.newLine();
             }
             
         } catch (Exception e) {
