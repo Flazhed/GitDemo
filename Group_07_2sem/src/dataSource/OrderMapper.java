@@ -32,6 +32,17 @@ public class OrderMapper {
 
         try {
             statement = con.prepareStatement(SQLString);
+            
+            //Debug
+            if(domain.Controller.debugMode)
+                    System.out.println("DebugMode (OrderMapper.java): " + "InsertOrder Values\n" +
+                    "OrderID: " + o.getOrderID() +
+                    "\nCustomerID: " + o.getCustomerID() +
+                    "\nSalesID: " + o.getSalesID() +
+                    "\nVerified: " + o.getBoolToInt() +
+                    "\nstartDate: " + o.getStartDate() +
+                    "\nendDate: " + o.getEndDate() +
+                    "\nPrice: " + o.getPrice());
 
             statement.setInt(1, o.getOrderID());
             statement.setInt(2, o.getCustomerID());
@@ -62,7 +73,11 @@ public class OrderMapper {
                 + "VALUES (?,?,?,?)";
 
         PreparedStatement statement = null;
-        System.out.println(odl.get(0).getOrderID() + " " + odl.get(0).getResourceTypeID() + " " + odl.get(0).getStorageID() + " " + odl.get(0).getQty());
+        
+        //Debug
+        if(domain.Controller.debugMode)
+            System.out.println(odl.get(0).getOrderID() + " " + odl.get(0).getResourceTypeID() + " " + odl.get(0).getStorageID() + " " + odl.get(0).getQty());
+        
         try {
             statement = con.prepareStatement(SQLString);
 
@@ -114,6 +129,17 @@ public class OrderMapper {
             if (rs.next()) {
                 boolean confirmed = (1 == rs.getInt(4));
                 o = new Order(orderID, rs.getInt(2), rs.getInt(3), confirmed, rs.getDate(5), rs.getDate(6), rs.getFloat(7));
+                
+                //Debug
+                if(domain.Controller.debugMode)
+                    System.out.println("DebugMode (OrderMapper.java): " + "GetOrder Values\n" +
+                    "OrderID: " + orderID +
+                    "\nCustomerID: " + rs.getInt(2) +
+                    "\nSalesID: " + rs.getInt(3) +
+                    "\nVerified: " + confirmed +
+                    "\nstartDate: " + rs.getDate(5) +
+                    "\nendDate: " + rs.getDate(6) +
+                    "\nPrice: " + rs.getFloat(7));
             }
 
             statement = con.prepareStatement(SQLString2);

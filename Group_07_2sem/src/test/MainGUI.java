@@ -606,6 +606,10 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNewOrder2ActionPerformed
 
     private void jButtonLookUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLookUpActionPerformed
+        
+        // jTableModelSingleOrder og jTableModelOrderDetails henter en ny order
+        // fra databasen hver gang de udføres. Dette giver 2 forbindelser til 
+        // databasen når det sagtens kunne gøres med 1.
         jTableModelOrderSetup();
         jTableOrder.setModel(jTableModelSingleOrder(Integer.parseInt(jTextFieldLookUpOrder.getText())));
         jTableOrderDetails.setModel(jTableModelOrderDetails(Integer.parseInt(jTextFieldLookUpOrder.getText())));

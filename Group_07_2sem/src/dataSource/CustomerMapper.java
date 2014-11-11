@@ -25,11 +25,22 @@ public class CustomerMapper {
         int rowInserted = 0;
         String SQLString = "INSERT INTO Customers "
                 + "VALUES (?,?,?,?,null,?)";
-
+        
+        if(domain.Controller.debugMode)
+            System.out.println("DebugMode (CustomerMapper.java): " + SQLString);
+        
         PreparedStatement statement = null;
 
         try {
             statement = con.prepareStatement(SQLString);
+            
+            if(domain.Controller.debugMode)
+            System.out.println("DebugMode (CustomerMapper.java): " + "Values\n" +
+                    "CustomerID: " + c.getCustomerID() +
+                    "\nFillname: " + c.getFullName() +
+                    "\nCompanyName: " + c.getCompanyName() +
+                    "\nAdress: " + c.getAddress() +
+                    "\n PhoneNumber: " + c.getPhoneNumber());
 
             statement.setInt(1, c.getCustomerID());
             statement.setString(2, c.getFullName());
@@ -49,8 +60,9 @@ public class CustomerMapper {
                 System.out.println("ERROR in CustomerMapper - insertCustomer.Finally " + e);
             }
         }
-
-        System.out.println("RowsInserted: " + rowInserted);
+        
+        if(domain.Controller.debugMode)
+            System.out.println("DebugMode (CustomerMapper.java): " + "RowsInserted: " + rowInserted);
 
         return rowInserted == 1;
     }
@@ -63,6 +75,9 @@ public class CustomerMapper {
         String SQLString1 = "SELECT * "
                 + "FROM Customers "
                 + "WHERE CustomerID = ?";
+        
+        if(domain.Controller.debugMode)
+            System.out.println("DebugMode (CustomerMapper.java): " + SQLString1);
 
 
         PreparedStatement statment = null;
@@ -74,6 +89,14 @@ public class CustomerMapper {
 
             if (rs.next()) {
                 c = new Customer(customerID, rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+                
+                if(domain.Controller.debugMode)
+                    System.out.println("DebugMode (CustomerMapper.java): " + "Values\n" +
+                    "CustomerID: " + customerID +
+                    "\nFillname: " + rs.getNString(rs.getString(2)) +
+                    "\nCompanyName: " + rs.getNString(rs.getString(3)) +
+                    "\nAdress: " + rs.getNString(rs.getString(4)) +
+                    "\n PhoneNumber: " + rs.getNString(rs.getString(6)));
             }
 
 

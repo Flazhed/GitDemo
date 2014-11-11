@@ -14,7 +14,6 @@ import java.util.Calendar;
 // Importer order
 import domain.Order;
 import domain.OrderDetail;
-import domain.Ressource;
 
 /**
  *
@@ -29,30 +28,26 @@ public class Filehandler {
         BufferedWriter writer = null;
         try {
             
-            //Laver midlertidig fil
+            //laver fil ud fra nuværende tidspunkt
             String timeLog = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
             File logFile = new File(timeLog + ".txt");
 
         
-            // This will output the full path where the file will be written to...
-            //System.out.println(logFile.getCanonicalPath());
+            if(domain.Controller.debugMode)
+                System.out.println("DebugMode (Filehandler.java): "+ "Writing to file" +
+                        logFile.getCanonicalPath() + logFile);
 
             writer = new BufferedWriter(new FileWriter(logFile));
         
-            
             //Sidehoved til dokumentet
             writer.write("OrderID:" + order.getOrderID());
             writer.newLine();
             writer.write("Antal\tResID\tLagerId\tnavn");
             writer.newLine();
-            //ResID, restypeID, String restype, StorageID, maxqty
-            
-            // metode (List resID, list StorID) return list res objects
-            
-            
             
             for (OrderDetail od : order.getOrderDetails()) {
-                    System.out.println(od.getQty() + "\t" + od.getResourceTypeID() + "\t" +
+                    if(domain.Controller.debugMode)
+                        System.out.println("DebugMode (Filehandler.java): "+ od.getQty() + "\t" + od.getResourceTypeID() + "\t" +
                             od.getRessource().getRessourceTypeName() + "\t" + od.getStorageID());
                     
                     writer.write(od.getQty() + "\t" + od.getResourceTypeID() + "\t" + 
@@ -64,7 +59,7 @@ public class Filehandler {
             e.printStackTrace();
         } finally {
             try {
-                // Close the writer regardless of what happens...
+                // flusher bufferen og lukker file stream
                 writer.close();
             } catch (Exception e) {
             }

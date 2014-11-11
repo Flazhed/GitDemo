@@ -30,6 +30,10 @@ public class TeamMapper {
         try {
             statement = con.prepareStatement(SQLString);
             statement.setInt(1, teamID);
+            
+            //Debug
+            if(domain.Controller.debugMode)
+                System.out.println("DebugMode (TeamMapper.java): " + "TeamID" + teamID);
 
             ResultSet rs = statement.executeQuery();
 

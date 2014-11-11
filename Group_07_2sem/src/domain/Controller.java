@@ -23,11 +23,16 @@ public class Controller {
 
     private static Controller instance;
     private DBFacade dbf;
+    
+    // When true methods will print info to the console
+    public static final boolean debugMode = true;
 
     private Controller() {
 
         dbf = DBFacade.getInstance();
     }
+
+    
 
     public static Controller getInstance() {
 
