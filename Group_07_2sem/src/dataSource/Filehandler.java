@@ -43,7 +43,7 @@ public class Filehandler {
             //Sidehoved til dokumentet
             writer.write("OrderID:" + order.getOrderID());
             writer.newLine();
-            writer.write("Antal \t RessourceID \t Navn \t LagerID");
+            writer.write("Antal\tResID\tLagerId\tnavn");
             writer.newLine();
             //ResID, restypeID, String restype, StorageID, maxqty
             
@@ -54,8 +54,9 @@ public class Filehandler {
             for (OrderDetail od : order.getOrderDetails()) {
                     System.out.println(od.getQty() + "\t" + od.getResourceTypeID() + "\t" +
                             od.getRessource().getRessourceTypeName() + "\t" + od.getStorageID());
-                    writer.write(od.getQty() + "\t" + od.getResourceTypeID() + "\t" +
-                            od.getRessource().getRessourceTypeName() + "\t" + od.getStorageID());
+                    
+                    writer.write(od.getQty() + "\t" + od.getResourceTypeID() + "\t" + 
+                            od.getStorageID() + "\t" + od.getRessource().getRessourceTypeName());
                     writer.newLine();
             }
             
