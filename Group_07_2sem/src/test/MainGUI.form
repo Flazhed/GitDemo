@@ -110,7 +110,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="dateChooserComboSearchFrom" alignment="1" pref="25" max="32767" attributes="0"/>
+                          <Component id="dateChooserComboSearchFrom" alignment="1" max="32767" attributes="0"/>
                           <Component id="dateChooserComboSearchTo" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButtonSearch" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -160,7 +160,9 @@
                                   <Component id="jTextFieldLookUpOrder" min="-2" pref="74" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButtonLookUp" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="855" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="343" max="-2" attributes="0"/>
+                                  <Component id="jButtonPrintOrder" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="419" max="32767" attributes="0"/>
                                   <Component id="jButtonNewOrder" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -179,6 +181,7 @@
                               <Component id="jButtonLookUp" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonNewOrder" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="jTextFieldLookUpOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonPrintOrder" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="16" max="32767" attributes="0"/>
                       </Group>
@@ -216,6 +219,14 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldLookUpOrder">
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonPrintOrder">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Print ordre"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPrintOrderActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -431,7 +442,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="dateChooserCombo1" alignment="1" max="32767" attributes="0"/>
                               <Component id="dateChooserCombo4" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jButton2" alignment="1" pref="25" max="32767" attributes="0"/>
+                              <Component id="jButton2" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="jButtonNewOrder1" min="-2" pref="23" max="-2" attributes="0"/>

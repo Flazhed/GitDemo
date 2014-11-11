@@ -8,6 +8,8 @@ package domain;
 import dataSource.DatabaseQueries;
 import dataSource.DBConnector;
 import dataSource.DBFacade;
+import dataSource.Filehandler;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -121,6 +123,10 @@ public class Controller {
         return dbf.getAllOrders();
     }
     
-    
+    public void PrintOrder (Order o){
+        Filehandler fh = new Filehandler();
+        fh.writeToFile(o);
+        
+    }
 
 }

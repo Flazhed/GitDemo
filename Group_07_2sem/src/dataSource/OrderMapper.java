@@ -101,7 +101,7 @@ public class OrderMapper {
 
         String SQLString2 = "SELECT DISTINCT od.RessourceTypeID, od.StorageID, od.qty, rs.qty, rst.typeName "
                 + "FROM Ressources rs, OrderDetails od, RessourceTypes rst "
-                + "WHERE od.OrderID = ? AND od.RessourceTypeID = rst.RessourceTypeID and Od.Storageid = rs.storageID and od.Ressourcetypeid= Rs.Ressourcetypeid;";
+                + "WHERE od.OrderID = ? AND od.RessourceTypeID = rst.RessourceTypeID and Od.Storageid = rs.storageID and od.Ressourcetypeid= Rs.Ressourcetypeid";
 
 // String for orderDetails, will be inserted here.
         PreparedStatement statement = null;

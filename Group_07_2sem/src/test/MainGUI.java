@@ -61,6 +61,7 @@ public class MainGUI extends javax.swing.JFrame {
         jButtonNewOrder = new javax.swing.JButton();
         jButtonLookUp = new javax.swing.JButton();
         jTextFieldLookUpOrder = new javax.swing.JTextField();
+        jButtonPrintOrder = new javax.swing.JButton();
         jButtonSearch = new javax.swing.JButton();
         dateChooserComboSearchTo = new datechooser.beans.DateChooserCombo();
         jLabel4 = new javax.swing.JLabel();
@@ -127,6 +128,13 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        jButtonPrintOrder.setText("Print ordre");
+        jButtonPrintOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -143,7 +151,9 @@ public class MainGUI extends javax.swing.JFrame {
                         .addComponent(jTextFieldLookUpOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonLookUp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 855, Short.MAX_VALUE)
+                        .addGap(343, 343, 343)
+                        .addComponent(jButtonPrintOrder)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 419, Short.MAX_VALUE)
                         .addComponent(jButtonNewOrder)))
                 .addContainerGap())
         );
@@ -157,7 +167,8 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jButtonLookUp)
                     .addComponent(jButtonNewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldLookUpOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldLookUpOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPrintOrder))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -249,7 +260,7 @@ public class MainGUI extends javax.swing.JFrame {
                         .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dateChooserComboSearchFrom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(dateChooserComboSearchFrom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dateChooserComboSearchTo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -379,7 +390,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(dateChooserCombo1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dateChooserCombo4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14)
                 .addComponent(jButtonNewOrder1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -611,6 +622,12 @@ public class MainGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonSearchCustomerActionPerformed
 
+    private void jButtonPrintOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintOrderActionPerformed
+        //Slyngel kode. Skal hentes fra "currentorder"
+        control.PrintOrder(control.getOrder(Integer.parseInt(jTextFieldLookUpOrder.getText())));
+        
+    }//GEN-LAST:event_jButtonPrintOrderActionPerformed
+
     //----------------------------------------------------------------
     //  jTableOrder metoder, begynder her:
     private DefaultTableModel jTableModelSingleOrder(int OrderID) {
@@ -798,6 +815,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNewOrder;
     private javax.swing.JButton jButtonNewOrder1;
     private javax.swing.JButton jButtonNewOrder2;
+    private javax.swing.JButton jButtonPrintOrder;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButtonSearchCustomer;
     private javax.swing.JButton jButtonSearchEmployee;
